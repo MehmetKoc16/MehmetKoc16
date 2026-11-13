@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <!-- Harita Arka Plan Grid Deseni -->
+    <pattern id="metro-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#E2E2DC" />
+    </pattern>
+
+    <!-- Kayan Tabela Kırpma Alanı -->
+    <clipPath id="ticker-clip">
+      <rect x="175" y="518" width="675" height="28" />
+    </clipPath>
+
+    <!-- Kart Gölgelendirme Filtresi -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+
+    <style>
+      text {
+        font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        text-rendering: geometricPrecision;
+      }
+      .line-label {
+        font-size: 12px;
+        font-weight: 700;
+        fill: #FFFFFF;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .station-title {
+        font-size: 13px;
+        font-weight: 700;
+        fill: #1A1A1A;
+      }
+      .station-sub {
+        font-size: 12px;
+        font-weight: 400;
+        fill: #555555;
+      }
+      .badge-text {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    </style>
+  </defs>
+
+  <!-- 1. ARKA PLAN VE ŞEBEKE IZGARASI -->
+  <rect width="880" height="560" fill="#F2F2EE" />
+  <rect width="880" height="560" fill="url(#metro-grid)" />
+
+  <!-- Şehir Sınırları & Nehir Şeridi (Transit Haritası Havası İçin Kıvrımlı Su Yolu) -->
+  <path d="M -20 480 Q 200 470 340 430 T 640 470 T 900 440" fill="none" stroke="#E3EAEF" stroke-width="26" stroke-linecap="round" opacity="0.7" />
+  <text x="790" y="465" font-size="12" font-weight="700" fill="#B0C4DE" letter-spacing="2">BOĞAZ HATTI</text>
+
+  <!-- 2. SOL ÜST TABELA (METRO GİRİŞİ & PROFİL BAŞLIĞI) -->
+  <g filter="url(#shadow)">
+    <rect x="25" y="22" width="565" height="74" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    
+    <!-- Metro Logo Sembolü -->
+    <circle cx="62" cy="59" r="22" fill="#C0392B" />
+    <rect x="34" y="53" width="56" height="12" rx="3" fill="#2E86DE" />
+    <text x="62" y="60" font-size="13" font-weight="900" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">METRO</text>
+
+    <!-- Yazılar -->
+    <text x="102" y="47" font-size="20" font-weight="800" fill="#1A1A1A" letter-spacing="0.5">MEHMET KOÇ HATTI</text>
+    <text x="102" y="66" font-size="13" font-weight="500" fill="#4A4A4A">Mobil, backend ve yapay zekâ araçları geliştiriyorum</text>
+    <text x="102" y="83" font-size="12" font-weight="600" fill="#16A085">@MehmetKoc16 · Türkiye · 948 Katkı · 19 Depo · 6 Yıldız</text>
+  </g>
+
+  <!-- 3. SAĞ ÜST: 53 HAFTALIK KATKI MONİTÖRÜ (SİNYAL ÇUBUKLARI) -->
+  <g filter="url(#shadow)">
+    <rect x="605" y="22" width="250" height="74" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    <text x="618" y="40" font-size="12" font-weight="800" fill="#1A1A1A" letter-spacing="0.3">HAFTALIK KATKI</text>
+    <text x="843" y="40" font-size="11.5" font-weight="600" fill="#2E86DE" text-anchor="end">53 hafta · 948 katkı</text>
+
+    <!-- 53 Haftalık Gerçek Veri Çubukları (X: 618'den 841'e) -->
+    <!-- Değerler: 0,0,1,0,28,12,0,0,0,0,0,2,0,4,10,0,0,1,0,0,0,0,7,3,2,8,50,7,0,9,4,0,2,4,17,34,16,3,2,2,3,30,85,48,100,72,57,24,59,96,81,18,47 -->
+    <g>
+      <rect x="618.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="622.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="626.6" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="630.9" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="635.2" y="78" width="2.6" height="7" rx="1" fill="#2E86DE" />
+      <rect x="639.5" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="643.8" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="648.1" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="652.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="656.7" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="661.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="665.3" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="669.6" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="673.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="678.2" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="682.5" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="686.8" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="691.1" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="695.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="699.7" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="704.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="708.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="712.6" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="716.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="721.2" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="725.5" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="729.8" y="72" width="2.6" height="13" rx="1" fill="#16A085" />
+      <rect x="734.1" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="738.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="742.7" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="747.0" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="751.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="755.6" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="759.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="764.2" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="768.5" y="76" width="2.6" height="9" rx="1" fill="#16A085" />
+      <rect x="772.8" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="777.1" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="781.4" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="785.7" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="790.0" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="794.3" y="77" width="2.6" height="8" rx="1" fill="#16A085" />
+      <rect x="798.6" y="66" width="2.6" height="19" rx="1" fill="#C0392B" />
+      <rect x="802.9" y="73" width="2.6" height="12" rx="1" fill="#16A085" />
+      <rect x="807.2" y="63" width="2.6" height="22" rx="1" fill="#C0392B" />
+      <rect x="811.5" y="69" width="2.6" height="16" rx="1" fill="#C0392B" />
+      <rect x="815.8" y="72" width="2.6" height="13" rx="1" fill="#16A085" />
+      <rect x="820.1" y="79" width="2.6" height="6" rx="1" fill="#2E86DE" />
+      <rect x="824.4" y="71" width="2.6" height="14" rx="1" fill="#16A085" />
+      <rect x="828.7" y="64" width="2.6" height="21" rx="1" fill="#C0392B" />
+      <rect x="833.0" y="67" width="2.6" height="18" rx="1" fill="#C0392B" />
+      <rect x="837.3" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="841.6" y="74" width="2.6" height="11" rx="1" fill="#16A085" />
+    </g>
+
+    <!-- Radar Tarama Efekti -->
+    <line x1="618" y1="58" x2="618" y2="87" stroke="#C0392B" stroke-width="1.8" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="224 0" dur="4.8s" repeatCount="indefinite" />
+    </line>
+  </g>
+
+  <!-- 4. METRO HATLARI ALT KORUYUCU KATMANI (BEYAZ KASING - KÖPRÜ GEÇİŞLERİ İÇİN) -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 170 L 520 170 L 570 220 L 730 220" />
+    <path d="M 60 240 L 460 240" />
+    <path d="M 60 310 L 620 310" />
+    <path d="M 60 390 L 420 390 L 460 350 L 520 350" />
+    <path d="M 560 480 L 560 310 L 610 260 L 720 260" />
+  </g>
+
+  <!-- 5. METRO HATLARI RENKLİ ŞERİTLERİ (7px, 0°, 45°, 90° GEOMETRİ) -->
+  <g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Python Hattı (#2E86DE) -->
+    <path id="track-python" d="M 60 170 L 520 170 L 570 220 L 730 220" stroke="#2E86DE" />
+
+    <!-- Go Hattı (#00ADD8) -->
+    <path id="track-go" d="M 60 240 L 460 240" stroke="#00ADD8" />
+
+    <!-- C# .NET Hattı (#C0392B) -->
+    <path id="track-csharp" d="M 60 310 L 620 310" stroke="#C0392B" />
+
+    <!-- Dart / Flutter Hattı (#16A085) -->
+    <path id="track-dart" d="M 60 390 L 420 390 L 460 350 L 520 350" stroke="#16A085" />
+
+    <!-- ShaderLab Hattı (#F39C12) -->
+    <path id="track-shaderlab" d="M 560 480 L 560 310 L 610 260 L 720 260" stroke="#F39C12" />
+  </g>
+
+  <!-- Hat Sonu Tamponları (Terminal Bumpers) -->
+  <g stroke="#1A1A1A" stroke-width="3" stroke-linecap="round">
+    <line x1="730" y1="213" x2="730" y2="227" />
+    <line x1="460" y1="233" x2="460" y2="247" />
+    <line x1="620" y1="303" x2="620" y2="317" />
+    <line x1="520" y1="343" x2="520" y2="357" />
+    <line x1="720" y1="253" x2="720" y2="267" />
+  </g>
+
+  <!-- 6. HAT BAŞI ROZETLERİ (TERMINAL BADGES) -->
+  <g>
+    <!-- Python Rozeti -->
+    <circle cx="40" cy="170" r="14" fill="#2E86DE" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="170" class="line-label">PY</text>
+
+    <!-- Go Rozeti -->
+    <circle cx="40" cy="240" r="14" fill="#00ADD8" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="240" class="line-label">GO</text>
+
+    <!-- C# Rozeti -->
+    <circle cx="40" cy="310" r="14" fill="#C0392B" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="310" class="line-label">C#</text>
+
+    <!-- Dart Rozeti -->
+    <circle cx="40" cy="390" r="14" fill="#16A085" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="390" class="line-label">DT</text>
+
+    <!-- ShaderLab Rozeti -->
+    <circle cx="560" cy="498" r="14" fill="#F39C12" stroke="#FFFFFF" stroke-width="2" />
+    <text x="560" y="498" class="line-label">SL</text>
+  </g>
+
+  <!-- 7. SMARTFINANCE ↔ SMARTFINANCE-MOBILE AKTARMA KORİDORU -->
+  <g>
+    <!-- Aktarma Kapsülü -->
+    <rect x="228" y="300" width="24" height="100" rx="12" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.5" />
+    <!-- Aktarma Yürüyüş Yolu Çizgisi -->
+    <line x1="240" y1="318" x2="240" y2="382" stroke="#7F8C8D" stroke-width="2.5" stroke-dasharray="3,3" />
+    
+    <!-- Aktarma Açıklama Etiketi -->
+    <g filter="url(#shadow)">
+      <rect x="260" y="338" width="144" height="24" rx="4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.2" />
+      <text x="266" y="354" font-size="12" font-weight="700" fill="#2C3E50">⇄ AKTARMA: API ↔ MOBİL</text>
+    </g>
+  </g>
+
+  <!-- 8. İSTASYONLAR VE BİLGİ ETİKETLERİ -->
+
+  <!-- Python İstasyonları -->
+  <!-- 1. pdf-toc-wizard -->
+  <g>
+    <circle cx="140" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="140" y="138" class="station-title" text-anchor="middle">pdf-toc-wizard</text>
+    <text x="140" y="153" class="station-sub" text-anchor="middle">PDF içindekiler aracı</text>
+  </g>
+
+  <!-- 2. Manhwa Çeviri -->
+  <g>
+    <circle cx="310" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="310" y="138" class="station-title" text-anchor="middle">Manhwa Çeviri</text>
+    <text x="310" y="153" class="station-sub" text-anchor="middle">Webtoon çeviri eklentisi</text>
+  </g>
+
+  <!-- 3. 3D-Twin -->
+  <g>
+    <circle cx="480" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="480" y="138" class="station-title" text-anchor="middle">3D-Twin</text>
+    <text x="480" y="153" class="station-sub" text-anchor="middle">3B dijital ikiz kabini</text>
+  </g>
+
+  <!-- Go İstasyonu -->
+  <!-- 4. Agent-message -->
+  <g>
+    <circle cx="350" cy="240" r="8" fill="#FFFFFF" stroke="#00ADD8" stroke-width="4.5" />
+    <text x="350" y="212" class="station-title" text-anchor="middle">Agent-message</text>
+    <text x="350" y="227" class="station-sub" text-anchor="middle">Yapay Zekâ Ajanları Canlı Relay Sunucusu</text>
+  </g>
+
+  <!-- C# İstasyonu -->
+  <!-- 5. SmartFinance (Aktarma Üst İstasyonu) -->
+  <g>
+    <circle cx="240" cy="310" r="7" fill="#C0392B" stroke="#FFFFFF" stroke-width="2" />
+    <text x="218" y="282" class="station-title" text-anchor="end">SmartFinance</text>
+    <text x="218" y="297" class="station-sub" text-anchor="end">C# .NET 9 · Clean Architecture API</text>
+  </g>
+
+  <!-- Dart İstasyonları -->
+  <!-- 6. Eczane -->
+  <g>
+    <circle cx="115" cy="390" r="8" fill="#FFFFFF" stroke="#16A085" stroke-width="4.5" />
+    <text x="115" y="420" class="station-title" text-anchor="middle">Eczane</text>
+    <text x="115" y="435" class="station-sub" text-anchor="middle">Nöbetçi eczane</text>
+  </g>
+
+  <!-- 7. SmartFinance-Mobile (Aktarma Alt İstasyonu) -->
+  <g>
+    <circle cx="240" cy="390" r="7" fill="#16A085" stroke="#FFFFFF" stroke-width="2" />
+    <text x="240" y="420" class="station-title" text-anchor="middle">SmartFinance-Mobile</text>
+    <text x="240" y="435" class="station-sub" text-anchor="middle">Mobil finans</text>
+  </g>
+
+  <!-- C# ve ShaderLab Kesişimi / Ortak İstasyon -->
+  <!-- 8. GameJam / Yanki -->
+  <g>
+    <!-- Çift Halka Kesişim İstasyonu -->
+    <circle cx="560" cy="310" r="11" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.5" />
+    <circle cx="560" cy="310" r="6" fill="#F39C12" stroke="#C0392B" stroke-width="2" />
+    
+    <text x="580" y="298" class="station-title">GameJam / Yanki</text>
+    <text x="702" y="298" font-size="11.5" font-weight="700" fill="#C0392B">Unity · ShaderLab · C#</text>
+    <text x="580" y="328" class="station-sub">Game Jam Oyunları &amp; Gölgelendirici Sanatı</text>
+  </g>
+
+  <!-- 9. CANLI HAREKET EDEN METRO TRENLERİ (SMIL animateMotion) -->
+
+  <!-- Python Treni (Mavi Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#2E86DE" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"
+      path="M 60 170 L 520 170 L 570 220 L 730 220 L 570 220 L 520 170 L 60 170 Z" />
+  </g>
+
+  <!-- Go Treni (Turkuaz Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#00ADD8" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto"
+      path="M 60 240 L 460 240 L 60 240 Z" />
+  </g>
+
+  <!-- C# Treni (Kırmızı Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="8s" repeatCount="indefinite" rotate="auto"
+      path="M 60 310 L 620 310 L 60 310 Z" />
+  </g>
+
+  <!-- Dart Treni (Yeşil Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#16A085" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="7.5s" repeatCount="indefinite" rotate="auto"
+      path="M 60 390 L 420 390 L 460 350 L 520 350 L 460 350 L 420 390 L 60 390 Z" />
+  </g>
+
+  <!-- ShaderLab Treni (Sarı/Turuncu Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#F39C12" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="8.5s" repeatCount="indefinite" rotate="auto"
+      path="M 560 480 L 560 310 L 610 260 L 720 260 L 610 260 L 560 310 L 560 480 Z" />
+  </g>
+
+  <!-- 10. SAĞ ALT: RESMİ HAT LEJANTI (METRO LINES LEGEND) -->
+  <g filter="url(#shadow)">
+    <rect x="615" y="358" width="240" height="146" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    
+    <!-- Başlık -->
+    <rect x="615" y="358" width="240" height="26" rx="8" fill="#F8F8F6" />
+    <text x="626" y="375" font-size="12" font-weight="800" fill="#1A1A1A" letter-spacing="0.5">HAT VE TEKNOLOJİ LEJANTI</text>
+    <line x1="615" y1="384" x2="855" y2="384" stroke="#E6E6DF" stroke-width="1" />
+
+    <!-- 1. Python -->
+    <rect x="626" y="394" width="20" height="6" rx="3" fill="#2E86DE" />
+    <text x="652" y="401" font-size="12" font-weight="700" fill="#1A1A1A">Python</text>
+    <text x="734" y="401" font-size="12" font-weight="700" fill="#2E86DE">%33</text>
+    <text x="764" y="401" font-size="12" fill="#555555">Ana Hat</text>
+
+    <!-- 2. TypeScript -->
+    <line x1="626" y1="419" x2="646" y2="419" stroke="#4A90E2" stroke-width="5" stroke-dasharray="4,2" />
+    <text x="652" y="420" font-size="12" font-weight="700" fill="#1A1A1A">TypeScript</text>
+    <text x="734" y="420" font-size="12" font-weight="700" fill="#4A90E2">%16</text>
+    <text x="764" y="420" font-size="12" fill="#555555">Web Arayüz</text>
+
+    <!-- 3. ShaderLab -->
+    <rect x="626" y="433" width="20" height="6" rx="3" fill="#F39C12" />
+    <text x="652" y="439" font-size="12" font-weight="700" fill="#1A1A1A">ShaderLab</text>
+    <text x="734" y="439" font-size="12" font-weight="700" fill="#F39C12">%12</text>
+    <text x="764" y="439" font-size="12" fill="#555555">Unity / Jam</text>
+
+    <!-- 4. C# -->
+    <rect x="626" y="452" width="20" height="6" rx="3" fill="#C0392B" />
+    <text x="652" y="458" font-size="12" font-weight="700" fill="#1A1A1A">C# .NET 9</text>
+    <text x="734" y="458" font-size="12" font-weight="700" fill="#C0392B">%11</text>
+    <text x="764" y="458" font-size="12" fill="#555555">Backend API</text>
+
+    <!-- 5. Dart -->
+    <rect x="626" y="471" width="20" height="6" rx="3" fill="#16A085" />
+    <text x="652" y="477" font-size="12" font-weight="700" fill="#1A1A1A">Dart / Flutter</text>
+    <text x="740" y="477" font-size="12" font-weight="700" fill="#16A085">%8</text>
+    <text x="764" y="477" font-size="12" fill="#555555">Mobil Ağı</text>
+
+    <!-- 6. Go -->
+    <rect x="626" y="490" width="20" height="6" rx="3" fill="#00ADD8" />
+    <text x="652" y="496" font-size="12" font-weight="700" fill="#1A1A1A">Go — Ajan ağı</text>
+  </g>
+
+  <!-- 11. EN ALT: CANLI KAYAN TABELA (TICKER TAPE) -->
+  <g>
+    <!-- Tabela Siyah Arka Planı -->
+    <rect x="25" y="516" width="830" height="32" rx="6" fill="#1A1A1A" />
+
+    <!-- Sol Sabit Rozet: "CANLI METRO BİLGİ" -->
+    <rect x="28" y="519" width="138" height="26" rx="4" fill="#2C3E50" />
+    <circle cx="41" cy="532" r="4.5" fill="#2ECC71">
+      <animate attributeName="opacity" values="1;0.25;1" dur="1.8s" repeatCount="indefinite" />
+    </circle>
+    <text x="53" y="536" font-size="12" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">CANLI TABELA</text>
+
+    <!-- Kayan Metin Bölgesi (Kırpılmış Görünüm) -->
+    <g clip-path="url(#ticker-clip)">
+      <g>
+        <text x="180" y="536" font-size="12" font-weight="600" fill="#F1C40F" letter-spacing="0.5">
+          HAT RAPORU: Son 1 yıl: 948 katkı · 19 depo · 6 yıldız · 15 takipçi · 53 aktif hafta · Aktarma Noktası: SmartFinance (C#) ⇄ SmartFinance-Mobile (Dart) · GameJam (Unity + ShaderLab) · Agent-message (Go Canlı Röle) · Python Ağı: 3D-Twin, Manhwa Çeviri, pdf-toc-wizard · Türkiye          HAT RAPORU: Son 1 yıl: 948 katkı · 19 depo · 6 yıldız · 15 takipçi · 53 aktif hafta · Aktarma Noktası: SmartFinance (C#) ⇄ SmartFinance-Mobile (Dart) · GameJam (Unity + ShaderLab) · Agent-message (Go Canlı Röle) · Python Ağı: 3D-Twin, Manhwa Çeviri, pdf-toc-wizard · Türkiye
+        </text>
+        <animateTransform attributeName="transform" type="translate" from="0 0" to="-1920 0" dur="25s" repeatCount="indefinite" />
+      </g>
+    </g>
+  </g>
+</svg>

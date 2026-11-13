@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="900" viewBox="0 0 880 900">
+  <defs>
+    <!-- Comic Halftone Pattern -->
+    <pattern id="halftone" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#9A9A9A" opacity="0.32" />
+    </pattern>
+    <pattern id="halftone-dense" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.5" fill="#111111" opacity="0.16" />
+    </pattern>
+    <!-- Arrowhead Marker -->
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0 1, 8 4, 0 7" fill="#111111" />
+    </marker>
+  </defs>
+
+  <style>
+    text {
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+      user-select: none;
+    }
+    .comic-font {
+      font-family: 'Segoe UI', Impact, Arial, sans-serif;
+    }
+  </style>
+
+  <!-- Canvas Background (Kâğıt Beyazı) -->
+  <rect width="880" height="900" fill="#FFFDF7" />
+
+  <!-- ==================== ÜST BAŞLIK ŞERİDİ ==================== -->
+  <g id="header-strip">
+    <!-- Drop Shadow -->
+    <rect x="18" y="16" width="852" height="48" rx="6" fill="#111111" />
+    <!-- Main Box -->
+    <rect x="14" y="12" width="852" height="48" rx="6" fill="#FFFDF7" stroke="#111111" stroke-width="3" />
+    
+    <!-- Issue Badge -->
+    <rect x="24" y="20" width="84" height="32" rx="4" fill="#E63946" stroke="#111111" stroke-width="2" />
+    <text x="66" y="41" text-anchor="middle" font-weight="900" font-size="13" fill="#FFFDF7" letter-spacing="1px">SAYI #01</text>
+    
+    <!-- Header Title -->
+    <text x="124" y="43" font-weight="900" font-size="19" fill="#111111" letter-spacing="0.5px">MEHMET KOÇ — BÖLÜM 1: ARAÇ YAPAN GELİŞTİRİCİ</text>
+    
+    <!-- User Badge -->
+    <rect x="668" y="20" width="186" height="32" rx="4" fill="#FFD23F" stroke="#111111" stroke-width="2" />
+    <text x="761" y="41" text-anchor="middle" font-weight="800" font-size="13" fill="#111111">@MehmetKoc16 · Türkiye</text>
+  </g>
+
+  <!-- ==================== PANEL 1: "SORUN" ==================== -->
+  <g id="panel-1">
+    <!-- Panel Shadow -->
+    <rect x="18" y="76" width="852" height="236" rx="5" fill="#111111" />
+    <!-- Panel Body -->
+    <rect x="14" y="72" width="852" height="236" rx="5" fill="#FFFDF7" stroke="#111111" stroke-width="3.5" />
+    
+    <!-- Halftone Texture Accents -->
+    <rect x="18" y="76" width="844" height="34" fill="url(#halftone)" opacity="0.45" />
+
+    <!-- Caption Box (Top-Left) -->
+    <rect x="28" y="84" width="395" height="26" fill="#111111" />
+    <rect x="26" y="82" width="395" height="26" fill="#FFD23F" stroke="#111111" stroke-width="2" />
+    <text x="36" y="99" font-weight="900" font-size="12" fill="#111111" letter-spacing="0.5px">PANEL 1 // SORUN: GÜNLÜK DİJİTAL SÜRÜNMEME...</text>
+
+    <!-- Top-Right Warning Stamp -->
+    <rect x="662" y="82" width="192" height="26" rx="3" fill="#E63946" stroke="#111111" stroke-width="2" />
+    <text x="758" y="99" text-anchor="middle" font-weight="800" font-size="12" fill="#FFFDF7">DURUM: KAOS VE VAKİT KAYBI</text>
+
+    <!-- SUB-PANEL 1A: Manhwa / Webtoon Sorunu (Sol) -->
+    <g transform="translate(30, 118)">
+      <rect x="0" y="0" width="258" height="176" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      <rect x="4" y="4" width="250" height="40" fill="url(#halftone)" opacity="0.3" />
+      
+      <!-- Spiky Comic Balloon -->
+      <path d="M 14,14 L 244,14 Q 252,14 252,22 L 252,66 Q 252,74 244,74 L 110,74 L 85,92 L 98,74 L 14,74 Q 6,74 6,66 L 6,22 Q 6,14 14,14 Z" 
+            fill="#FFFDF7" stroke="#111111" stroke-width="2.2" />
+      <text x="18" y="32" font-weight="900" font-size="13" fill="#E63946">?!#*&amp;@ Webtoon Balonu!</text>
+      <text x="18" y="50" font-weight="700" font-size="12" fill="#111111">Korece/İngilizce raw çizim;</text>
+      <text x="18" y="67" font-weight="500" font-size="12" fill="#111111">çeviri yok, sözlükle uğraş dur...</text>
+
+      <!-- Webtoon Sketch Detail -->
+      <rect x="12" y="100" width="234" height="64" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.5" stroke-dasharray="4,3" />
+      <!-- Manga action lines & question mark -->
+      <line x1="24" y1="112" x2="60" y2="124" stroke="#111111" stroke-width="2" />
+      <line x1="20" y1="134" x2="65" y2="134" stroke="#111111" stroke-width="2" />
+      <line x1="24" y1="152" x2="58" y2="142" stroke="#111111" stroke-width="2" />
+      <text x="100" y="138" font-family="'Segoe UI', Impact, Arial" font-weight="900" font-size="28" fill="#E63946">RAW ?!</text>
+      <rect x="156" y="134" width="82" height="22" rx="3" fill="#111111" />
+      <text x="197" y="149" text-anchor="middle" font-weight="700" font-size="12" fill="#FFD23F">ÇEVİRİ YOK</text>
+    </g>
+
+    <!-- SUB-PANEL 1B: PDF Karmaşası (Orta) -->
+    <g transform="translate(311, 118)">
+      <rect x="0" y="0" width="258" height="176" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      <rect x="4" y="4" width="250" height="40" fill="url(#halftone)" opacity="0.3" />
+      
+      <!-- Spiky Comic Balloon -->
+      <path d="M 14,14 L 244,14 Q 252,14 252,22 L 252,66 Q 252,74 244,74 L 140,74 L 115,92 L 128,74 L 14,74 Q 6,74 6,66 L 6,22 Q 6,14 14,14 Z" 
+            fill="#FFFDF7" stroke="#111111" stroke-width="2.2" />
+      <text x="18" y="32" font-weight="900" font-size="13" fill="#E63946">İçindekiler tablosu nerede?!</text>
+      <text x="18" y="50" font-weight="700" font-size="12" fill="#111111">700 sayfalık teknik PDF belgesi;</text>
+      <text x="18" y="67" font-weight="500" font-size="12" fill="#111111">başlıklar tıklanmıyor, kayboldum!</text>
+
+      <!-- PDF Scribble Detail -->
+      <rect x="12" y="100" width="234" height="64" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.5" stroke-dasharray="4,3" />
+      <!-- Crooked page lines -->
+      <rect x="22" y="108" width="80" height="48" rx="2" fill="#FFFFFF" stroke="#111111" stroke-width="1.5" transform="rotate(-4 22 108)" />
+      <line x1="28" y1="120" x2="80" y2="120" stroke="#9A9A9A" stroke-width="2" />
+      <line x1="28" y1="130" x2="75" y2="130" stroke="#9A9A9A" stroke-width="2" />
+      <line x1="28" y1="140" x2="65" y2="140" stroke="#9A9A9A" stroke-width="2" />
+      <text x="140" y="130" font-weight="900" font-size="13" fill="#E63946">TOC EKSİK</text>
+      <rect x="120" y="134" width="118" height="22" rx="3" fill="#111111" />
+      <text x="179" y="149" text-anchor="middle" font-weight="700" font-size="12" fill="#FFD23F">SAYFA 1/700 ?</text>
+    </g>
+
+    <!-- SUB-PANEL 1C: Harcama / Fiş Çıkmazı (Sağ) -->
+    <g transform="translate(592, 118)">
+      <rect x="0" y="0" width="258" height="176" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      <rect x="4" y="4" width="250" height="40" fill="url(#halftone)" opacity="0.3" />
+      
+      <!-- Spiky Comic Balloon -->
+      <path d="M 14,14 L 244,14 Q 252,14 252,22 L 252,66 Q 252,74 244,74 L 170,74 L 145,92 L 158,74 L 14,74 Q 6,74 6,66 L 6,22 Q 6,14 14,14 Z" 
+            fill="#FFFDF7" stroke="#111111" stroke-width="2.2" />
+      <text x="18" y="32" font-weight="900" font-size="13" fill="#E63946">Bütçe hesabı yine karıştı!</text>
+      <text x="18" y="50" font-weight="700" font-size="12" fill="#111111">Fişler, abonelikler darmadağın;</text>
+      <text x="18" y="67" font-weight="500" font-size="12" fill="#111111">ay sonu nereye gitti bu para?!</text>
+
+      <!-- Receipt Scribble Detail -->
+      <rect x="12" y="100" width="234" height="64" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.5" stroke-dasharray="4,3" />
+      <!-- Jagged Receipt -->
+      <path d="M 24,106 L 90,106 L 90,154 L 84,150 L 78,154 L 72,150 L 66,154 L 60,150 L 54,154 L 48,150 L 42,154 L 36,150 L 30,154 L 24,150 Z" 
+            fill="#FFFFFF" stroke="#111111" stroke-width="1.5" />
+      <line x1="32" y1="116" x2="82" y2="116" stroke="#111111" stroke-width="1.5" />
+      <line x1="32" y1="126" x2="72" y2="126" stroke="#9A9A9A" stroke-width="1.5" />
+      <line x1="32" y1="136" x2="62" y2="136" stroke="#E63946" stroke-width="1.5" />
+      <text x="125" y="128" font-weight="900" font-size="13" fill="#E63946">KAYIP BÜTÇE</text>
+      <rect x="110" y="134" width="128" height="22" rx="3" fill="#111111" />
+      <text x="174" y="149" text-anchor="middle" font-weight="700" font-size="12" fill="#FFD23F">FİŞLER: ??? ₺</text>
+    </g>
+  </g>
+
+  <!-- ==================== PANEL 2: "SİSTEM" ==================== -->
+  <!-- HAREKET YALNIZ BU PANELDE: Oklar boyunca ilerleyen noktalar -->
+  <g id="panel-2">
+    <!-- Panel Shadow -->
+    <rect x="18" y="324" width="852" height="260" rx="5" fill="#111111" />
+    <!-- Panel Body -->
+    <rect x="14" y="320" width="852" height="260" rx="5" fill="#FFFDF7" stroke="#111111" stroke-width="3.5" />
+    
+    <!-- Halftone Texture Backdrop -->
+    <rect x="18" y="324" width="844" height="252" fill="url(#halftone)" opacity="0.2" />
+
+    <!-- Caption Box (Top-Left) -->
+    <rect x="28" y="332" width="418" height="26" fill="#111111" />
+    <rect x="26" y="330" width="418" height="26" fill="#FFD23F" stroke="#111111" stroke-width="2" />
+    <text x="36" y="347" font-weight="900" font-size="12" fill="#111111" letter-spacing="0.5px">PANEL 2 // SİSTEM: 'ŞİKÂYET ETME, KODLA VE ÇÖZ!'</text>
+
+    <!-- Top-Right Stats Pill -->
+    <rect x="618" y="330" width="236" height="26" rx="3" fill="#111111" />
+    <text x="736" y="347" text-anchor="middle" font-weight="800" font-size="12" fill="#FFD23F">948 KATKI · 19 REPO · 15 TAKİPÇİ</text>
+
+    <!-- Developer Character & Terminal Setup (Sol Alan: x: 26 to 275) -->
+    <g id="developer-character" transform="translate(26, 364)">
+      <!-- Developer Dialogue Balloon -->
+      <path d="M 10,2 L 236,2 Q 244,2 244,10 L 244,40 Q 244,48 236,48 L 130,48 L 115,62 L 122,48 L 10,48 Q 2,48 2,40 L 2,10 Q 2,2 10,2 Z" 
+            fill="#FFFDF7" stroke="#111111" stroke-width="2" />
+      <text x="14" y="21" font-weight="800" font-size="12" fill="#111111">«Her tekrar eden problem,»</text>
+      <text x="14" y="38" font-weight="900" font-size="12" fill="#E63946">«açık kaynak bir araca dönüşür!»</text>
+
+      <!-- Developer Character Linework (Simple, Faceless Manga Dev) -->
+      <!-- Chair back -->
+      <path d="M 38,82 Q 44,56 66,54 L 66,132 L 36,132 Z" fill="#9A9A9A" opacity="0.4" stroke="#111111" stroke-width="2" />
+      <!-- Developer Head (Hoodie + Glasses) -->
+      <circle cx="82" cy="80" r="18" fill="#FFFDF7" stroke="#111111" stroke-width="2.5" />
+      <!-- Hoodie outline -->
+      <path d="M 66,84 C 66,66 98,66 98,84 C 98,92 92,100 82,100 C 72,100 66,92 66,84 Z" fill="#111111" />
+      <!-- Glasses rim (linework) -->
+      <rect x="85" y="78" width="14" height="8" rx="2" fill="#FFFDF7" stroke="#FFD23F" stroke-width="2" />
+      <line x1="99" y1="82" x2="104" y2="84" stroke="#FFD23F" stroke-width="2" />
+
+      <!-- Torso & Arms typing -->
+      <path d="M 64,100 L 110,100 L 126,134 L 56,134 Z" fill="#111111" stroke="#111111" stroke-width="2" />
+      <!-- Arm bent forward to keyboard -->
+      <path d="M 86,104 L 118,124 L 138,124" fill="none" stroke="#FFFDF7" stroke-width="3" stroke-linecap="round" />
+
+      <!-- Desk Surface -->
+      <line x1="30" y1="138" x2="246" y2="138" stroke="#111111" stroke-width="3.5" />
+      
+      <!-- Mechanical Keyboard -->
+      <rect x="122" y="132" width="48" height="6" rx="1.5" fill="#9A9A9A" stroke="#111111" stroke-width="1.2" />
+
+      <!-- Coffee Mug (Essential Dev Gear) -->
+      <rect x="44" y="124" width="14" height="14" rx="2" fill="#FFFDF7" stroke="#111111" stroke-width="1.8" />
+      <path d="M 58,127 Q 63,131 58,135" fill="none" stroke="#111111" stroke-width="1.8" />
+      <path d="M 48,120 Q 51,114 49,110" fill="none" stroke="#E63946" stroke-width="1.5" />
+
+      <!-- Main Workstation Monitor -->
+      <rect x="156" y="66" width="86" height="64" rx="4" fill="#111111" stroke="#111111" stroke-width="2.5" />
+      <rect x="160" y="70" width="78" height="56" rx="2" fill="#FFFDF7" stroke="#111111" stroke-width="1" />
+      <!-- Terminal Lines on Screen -->
+      <line x1="164" y1="78" x2="194" y2="78" stroke="#E63946" stroke-width="2" />
+      <line x1="164" y1="86" x2="228" y2="86" stroke="#111111" stroke-width="2" />
+      <line x1="164" y1="94" x2="216" y2="94" stroke="#111111" stroke-width="2" />
+      <line x1="164" y1="102" x2="232" y2="102" stroke="#FFD23F" stroke-width="2" />
+      <line x1="164" y1="110" x2="188" y2="110" stroke="#111111" stroke-width="2" />
+      <!-- Monitor Stand -->
+      <rect x="194" y="130" width="10" height="8" fill="#111111" />
+      <rect x="186" y="136" width="26" height="3" rx="1" fill="#111111" />
+
+      <!-- Mini 53-Haftalık Katkı Ritim Şeridi (Gerçek Veri) -->
+      <g transform="translate(4, 150)">
+        <rect x="0" y="0" width="238" height="48" rx="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.5" />
+        <text x="8" y="15" font-weight="800" font-size="11" fill="#111111">53 Haftalık Katkı Ritmi (948 katkı)</text>
+        <!-- 53 Haftalık Gerçek Veri Barları -->
+        <g transform="translate(8, 22)">
+          <!-- Haftalık değerler: 0,0,1,0,28,12,0,0,0,0,0,2,0,4,10,0,0,1,0,0,0,0,7,3,2,8,50,7,0,9,4,0,2,4,17,34,16,3,2,2,3,30,85,48,100,72,57,24,59,96,81,18,47 -->
+          <rect x="0" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="4.2" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="8.4" y="15" width="3" height="4" fill="#111111" />
+          <rect x="12.6" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="16.8" y="11" width="3" height="8" fill="#111111" />
+          <rect x="21" y="14" width="3" height="5" fill="#111111" />
+          <rect x="25.2" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="29.4" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="33.6" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="37.8" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="42" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="46.2" y="15" width="3" height="4" fill="#111111" />
+          <rect x="50.4" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="54.6" y="14" width="3" height="5" fill="#111111" />
+          <rect x="58.8" y="13" width="3" height="6" fill="#111111" />
+          <rect x="63" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="67.2" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="71.4" y="15" width="3" height="4" fill="#111111" />
+          <rect x="75.6" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="79.8" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="84" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="88.2" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="92.4" y="14" width="3" height="5" fill="#111111" />
+          <rect x="96.6" y="15" width="3" height="4" fill="#111111" />
+          <rect x="100.8" y="15" width="3" height="4" fill="#111111" />
+          <rect x="105" y="13" width="3" height="6" fill="#111111" />
+          <rect x="109.2" y="8" width="3" height="11" fill="#E63946" />
+          <rect x="113.4" y="14" width="3" height="5" fill="#111111" />
+          <rect x="117.6" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="121.8" y="13" width="3" height="6" fill="#111111" />
+          <rect x="126" y="14" width="3" height="5" fill="#111111" />
+          <rect x="130.2" y="16" width="3" height="3" fill="#9A9A9A" />
+          <rect x="134.4" y="15" width="3" height="4" fill="#111111" />
+          <rect x="138.6" y="14" width="3" height="5" fill="#111111" />
+          <rect x="142.8" y="11" width="3" height="8" fill="#111111" />
+          <rect x="147" y="8" width="3" height="11" fill="#111111" />
+          <rect x="151.2" y="11" width="3" height="8" fill="#111111" />
+          <rect x="155.4" y="15" width="3" height="4" fill="#111111" />
+          <rect x="159.6" y="15" width="3" height="4" fill="#111111" />
+          <rect x="163.8" y="15" width="3" height="4" fill="#111111" />
+          <rect x="168" y="15" width="3" height="4" fill="#111111" />
+          <rect x="172.2" y="9" width="3" height="10" fill="#111111" />
+          <rect x="176.4" y="3" width="3" height="16" fill="#E63946" />
+          <rect x="180.6" y="7" width="3" height="12" fill="#E63946" />
+          <rect x="184.8" y="0" width="3" height="19" fill="#E63946" />
+          <rect x="189" y="4" width="3" height="15" fill="#E63946" />
+          <rect x="193.2" y="6" width="3" height="13" fill="#E63946" />
+          <rect x="197.4" y="11" width="3" height="8" fill="#111111" />
+          <rect x="201.6" y="6" width="3" height="13" fill="#E63946" />
+          <rect x="205.8" y="1" width="3" height="18" fill="#E63946" />
+          <rect x="210" y="3" width="3" height="16" fill="#E63946" />
+          <rect x="214.2" y="11" width="3" height="8" fill="#111111" />
+          <rect x="218.4" y="7" width="3" height="12" fill="#E63946" />
+        </g>
+      </g>
+    </g>
+
+    <!-- PIPELINE ARROWS: Ekrandan çıkan 3 ana boru hattı -->
+    <!-- Arrow 1: To Manhwa Çeviri (Üst) -->
+    <path id="pipeline-path-1" d="M 272,434 C 345,434 375,386 448,386" 
+          fill="none" stroke="#111111" stroke-width="3.5" stroke-dasharray="8,6" marker-end="url(#arrowhead)" />
+    <!-- Arrow 2: To pdf-toc-wizard (Orta) -->
+    <path id="pipeline-path-2" d="M 272,456 C 345,456 375,456 448,456" 
+          fill="none" stroke="#111111" stroke-width="3.5" stroke-dasharray="8,6" marker-end="url(#arrowhead)" />
+    <!-- Arrow 3: To SmartFinance (Alt) -->
+    <path id="pipeline-path-3" d="M 272,478 C 345,478 375,526 448,526" 
+          fill="none" stroke="#111111" stroke-width="3.5" stroke-dasharray="8,6" marker-end="url(#arrowhead)" />
+
+    <!-- ANIMATED DOTS (HAREKET YALNIZ BU PANELDE) -->
+    <!-- Pipeline 1 Dots -->
+    <circle r="5" fill="#E63946" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" repeatCount="indefinite" path="M 272,434 C 345,434 375,386 448,386" />
+    </circle>
+    <circle r="4" fill="#FFD23F" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" begin="2.1s" repeatCount="indefinite" path="M 272,434 C 345,434 375,386 448,386" />
+    </circle>
+
+    <!-- Pipeline 2 Dots -->
+    <circle r="5" fill="#E63946" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" begin="0.7s" repeatCount="indefinite" path="M 272,456 C 345,456 375,456 448,456" />
+    </circle>
+    <circle r="4" fill="#FFD23F" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" begin="2.8s" repeatCount="indefinite" path="M 272,456 C 345,456 375,456 448,456" />
+    </circle>
+
+    <!-- Pipeline 3 Dots -->
+    <circle r="5" fill="#E63946" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" begin="1.4s" repeatCount="indefinite" path="M 272,478 C 345,478 375,526 448,526" />
+    </circle>
+    <circle r="4" fill="#FFD23F" stroke="#111111" stroke-width="1.2">
+      <animateMotion dur="4.2s" begin="3.5s" repeatCount="indefinite" path="M 272,478 C 345,478 375,526 448,526" />
+    </circle>
+
+    <!-- THREE TARGET PROJECT CARDS (Sağ Alan: x: 454 to 850) -->
+    <!-- Card 1: Manhwa Çeviri -->
+    <g transform="translate(456, 362)">
+      <!-- Drop Shadow -->
+      <rect x="4" y="4" width="392" height="52" rx="4" fill="#111111" />
+      <rect x="0" y="0" width="392" height="52" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2.5" />
+      <!-- Tool Badge -->
+      <rect x="10" y="8" width="132" height="20" rx="3" fill="#E63946" />
+      <text x="76" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">MANHWA ÇEVİRİ</text>
+      <!-- Stack Pill -->
+      <rect x="148" y="8" width="62" height="20" rx="3" fill="#FFD23F" stroke="#111111" stroke-width="1.2" />
+      <text x="179" y="22" text-anchor="middle" font-weight="800" font-size="12" fill="#111111">Python</text>
+      <!-- Description -->
+      <text x="10" y="42" font-weight="600" font-size="11" fill="#111111">Webtoon balonlarını yerel modelle Türkçeye çeviren eklenti</text>
+    </g>
+
+    <!-- Card 2: pdf-toc-wizard -->
+    <g transform="translate(456, 432)">
+      <!-- Drop Shadow -->
+      <rect x="4" y="4" width="392" height="52" rx="4" fill="#111111" />
+      <rect x="0" y="0" width="392" height="52" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2.5" />
+      <!-- Tool Badge -->
+      <rect x="10" y="8" width="132" height="20" rx="3" fill="#E63946" />
+      <text x="76" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">PDF-TOC-WIZARD</text>
+      <!-- Stack Pill -->
+      <rect x="148" y="8" width="62" height="20" rx="3" fill="#FFD23F" stroke="#111111" stroke-width="1.2" />
+      <text x="179" y="22" text-anchor="middle" font-weight="800" font-size="12" fill="#111111">Python</text>
+      <!-- Description -->
+      <text x="10" y="42" font-weight="600" font-size="12" fill="#111111">PDF'lerden tıklanabilir hiyerarşik içindekiler tablosu</text>
+    </g>
+
+    <!-- Card 3: SmartFinance -->
+    <g transform="translate(456, 502)">
+      <!-- Drop Shadow -->
+      <rect x="4" y="4" width="392" height="52" rx="4" fill="#111111" />
+      <rect x="0" y="0" width="392" height="52" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2.5" />
+      <!-- Tool Badge -->
+      <rect x="10" y="8" width="132" height="20" rx="3" fill="#E63946" />
+      <text x="76" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">SMARTFINANCE</text>
+      <!-- Stack Pill -->
+      <rect x="148" y="8" width="128" height="20" rx="3" fill="#FFD23F" stroke="#111111" stroke-width="1.2" />
+      <text x="212" y="22" text-anchor="middle" font-weight="800" font-size="11" fill="#111111">C# .NET 9 · Flutter</text>
+      <!-- Description -->
+      <text x="10" y="42" font-weight="600" font-size="12" fill="#111111">Finans API'si (Clean Arch) ve Flutter mobil uygulaması</text>
+    </g>
+  </g>
+
+  <!-- ==================== PANEL 3: "SONUÇ" ==================== -->
+  <g id="panel-3">
+    <!-- Panel Shadow -->
+    <rect x="18" y="596" width="852" height="292" rx="5" fill="#111111" />
+    <!-- Panel Body -->
+    <rect x="14" y="592" width="852" height="292" rx="5" fill="#FFFDF7" stroke="#111111" stroke-width="3.5" />
+    
+    <!-- Halftone Texture Accents -->
+    <rect x="18" y="596" width="844" height="42" fill="url(#halftone)" opacity="0.3" />
+
+    <!-- Caption Box (Top-Left) -->
+    <rect x="28" y="602" width="298" height="26" fill="#111111" />
+    <rect x="26" y="600" width="298" height="26" fill="#FFD23F" stroke="#111111" stroke-width="2" />
+    <text x="36" y="617" font-weight="900" font-size="12" fill="#111111" letter-spacing="0.5px">PANEL 3 // SONUÇ: DÖNÜŞÜM BAŞARILI!</text>
+
+    <!-- Top-Right Success Badge -->
+    <rect x="670" y="600" width="184" height="26" rx="3" fill="#111111" />
+    <text x="762" y="617" text-anchor="middle" font-weight="800" font-size="12" fill="#FFFDF7">3 ARAÇ DA CANLI &amp; AKTİF ✓</text>
+
+    <!-- MANGA SOUND EFFECT: "TAMAM!" (Center Stage) -->
+    <g id="sound-effect-tamam">
+      <!-- Radiating Manga Speed Lines -->
+      <line x1="344" y1="616" x2="310" y2="614" stroke="#111111" stroke-width="2.5" />
+      <line x1="348" y1="624" x2="320" y2="628" stroke="#111111" stroke-width="2" />
+      <line x1="356" y1="632" x2="330" y2="638" stroke="#111111" stroke-width="2" />
+      <line x1="524" y1="616" x2="558" y2="614" stroke="#111111" stroke-width="2.5" />
+      <line x1="520" y1="624" x2="548" y2="628" stroke="#111111" stroke-width="2" />
+      <line x1="512" y1="632" x2="538" y2="638" stroke="#111111" stroke-width="2" />
+
+      <!-- Extruded Comic Text Shadow -->
+      <text x="444" y="632" text-anchor="middle" class="comic-font" font-weight="900" font-size="36" fill="#111111" letter-spacing="4px">TAMAM!</text>
+      <!-- Foreground Manga Sound Text -->
+      <text x="440" y="629" text-anchor="middle" class="comic-font" font-weight="900" font-size="36" fill="#FFD23F" stroke="#111111" stroke-width="2.2" letter-spacing="4px">TAMAM!</text>
+    </g>
+
+    <!-- THREE SOLUTION RESULT CARDS (y: 642 to 842) -->
+    <!-- Card 3A: Solved Webtoon (Sol) -->
+    <g transform="translate(30, 642)">
+      <rect x="0" y="0" width="258" height="200" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      
+      <!-- Card Header -->
+      <rect x="8" y="8" width="144" height="20" rx="3" fill="#E63946" />
+      <text x="80" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">MANHWA ÇEVİRİ ✓</text>
+
+      <!-- Translated Dialogue Bubble -->
+      <path d="M 12,38 L 244,38 Q 250,38 250,44 L 250,96 Q 250,102 244,102 L 105,102 L 85,116 L 96,102 L 12,102 Q 6,102 6,96 L 6,44 Q 6,38 12,38 Z" 
+            fill="#FFFDF7" stroke="#111111" stroke-width="2" />
+      <text x="18" y="55" font-weight="900" font-size="13" fill="#111111">«Harika! Tüm sayfalar»</text>
+      <text x="18" y="74" font-weight="900" font-size="13" fill="#111111">«yerel yapay zekâ ile»</text>
+      <text x="18" y="93" font-weight="900" font-size="13" fill="#E63946">«artık akıcı Türkçe!»</text>
+
+      <!-- Verification Specs Box -->
+      <g transform="translate(8, 126)">
+        <rect x="0" y="0" width="242" height="66" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.2" />
+        <text x="10" y="20" font-weight="800" font-size="12" fill="#111111">✓ Python + Yerel Model</text>
+        <text x="10" y="38" font-weight="600" font-size="12" fill="#111111">✓ Balonları anında tespit eder</text>
+        <text x="10" y="56" font-weight="600" font-size="12" fill="#111111">✓ Tarayıcı eklentisiyle tek tık</text>
+      </g>
+    </g>
+
+    <!-- Card 3B: Solved PDF with TOC (Orta) -->
+    <g transform="translate(311, 642)">
+      <rect x="0" y="0" width="258" height="200" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      
+      <!-- Card Header -->
+      <rect x="8" y="8" width="144" height="20" rx="3" fill="#E63946" />
+      <text x="80" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">PDF-TOC-WIZARD ✓</text>
+
+      <!-- Tidy TOC List Box -->
+      <g transform="translate(8, 36)">
+        <rect x="0" y="0" width="242" height="82" rx="3" fill="#FFFDF7" stroke="#111111" stroke-width="1.8" />
+        <rect x="0" y="0" width="242" height="22" fill="#111111" />
+        <text x="8" y="15" font-weight="800" font-size="12" fill="#FFD23F">Tıklanabilir İçindekiler Listesi</text>
+        <text x="8" y="38" font-weight="700" font-size="11" fill="#111111">▸ 1. Giriş ve Mimari ..... s. 01</text>
+        <text x="8" y="55" font-weight="700" font-size="11" fill="#111111">▾ 2. Clean Architecture .. s. 24</text>
+        <text x="18" y="72" font-weight="600" font-size="11" fill="#E63946">▪ 2.1 API Katmanı ..... s. 48</text>
+      </g>
+
+      <!-- Verification Specs Box -->
+      <g transform="translate(8, 126)">
+        <rect x="0" y="0" width="242" height="66" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.2" />
+        <text x="10" y="20" font-weight="800" font-size="12" fill="#111111">✓ Python tabanlı otomasyon</text>
+        <text x="10" y="38" font-weight="600" font-size="12" fill="#111111">✓ Hiyerarşik yer imi (bookmark)</text>
+        <text x="10" y="56" font-weight="600" font-size="12" fill="#111111">✓ 700 sayfalık PDF anında hazır</text>
+      </g>
+    </g>
+
+    <!-- Card 3C: Solved SmartFinance on Mobile (Sağ) -->
+    <g transform="translate(592, 642)">
+      <rect x="0" y="0" width="258" height="200" rx="4" fill="#FFFFFF" stroke="#111111" stroke-width="2" />
+      
+      <!-- Card Header -->
+      <rect x="8" y="8" width="168" height="20" rx="3" fill="#E63946" />
+      <text x="92" y="22" text-anchor="middle" font-weight="900" font-size="12" fill="#FFFDF7">SMARTFINANCE &amp; MOBİL ✓</text>
+
+      <!-- Smartphone / Dashboard Screen -->
+      <g transform="translate(8, 36)">
+        <rect x="0" y="0" width="242" height="82" rx="4" fill="#111111" stroke="#111111" stroke-width="1.5" />
+        <!-- Screen Top -->
+        <text x="8" y="16" font-weight="700" font-size="12" fill="#FFD23F">SmartFinance · .NET 9 + Flutter</text>
+        <!-- Big Balance -->
+        <text x="8" y="35" font-weight="900" font-size="13" fill="#FFFDF7">Bütçe Özeti ✓</text>
+        
+        <!-- Budget Mini Chart Bars -->
+        <g transform="translate(8, 44)">
+          <rect x="0" y="14" width="16" height="18" fill="#FFD23F" />
+          <rect x="22" y="6" width="16" height="26" fill="#E63946" />
+          <rect x="44" y="18" width="16" height="14" fill="#FFFDF7" />
+          <rect x="66" y="2" width="16" height="30" fill="#FFD23F" />
+          <text x="90" y="15" font-weight="700" font-size="11" fill="#FFFDF7">Harcamalar</text>
+          <text x="90" y="28" font-weight="700" font-size="11" fill="#FFFDF7">kategorilere ayrıldı</text>
+        </g>
+      </g>
+
+      <!-- Verification Specs Box -->
+      <g transform="translate(8, 126)">
+        <rect x="0" y="0" width="242" height="66" rx="3" fill="#FFFDF7" stroke="#9A9A9A" stroke-width="1.2" />
+        <text x="10" y="20" font-weight="800" font-size="12" fill="#111111">✓ C# .NET 9 Clean Architecture</text>
+        <text x="10" y="38" font-weight="600" font-size="12" fill="#111111">✓ Flutter / Dart mobil arayüzü</text>
+        <text x="10" y="56" font-weight="600" font-size="12" fill="#111111">✓ Fiş karmaşası bitti, bütçe cepte</text>
+      </g>
+    </g>
+
+    <!-- FOOTER PROFILE STRIP (Bottom of Comic) -->
+    <g transform="translate(26, 852)">
+      <rect x="0" y="0" width="828" height="24" rx="3" fill="#FFD23F" stroke="#111111" stroke-width="2" />
+      <text x="414" y="16" text-anchor="middle" font-weight="800" font-size="11" fill="#111111">DİLLER: Python %33 · TypeScript %16 · ShaderLab %12 · C# %11 · Dart %8 · Diğer %20 | DİĞER: 3D-Twin, Agent-message, Yanki, Eczane</text>
+    </g>
+  </g>
+</svg>

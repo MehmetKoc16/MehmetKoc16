@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="880" height="520" viewBox="0 0 880 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- CRT Tarama Çizgisi Deseni -->
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000000" opacity="0.18" />
+      <rect y="2" width="4" height="2" fill="transparent" />
+    </pattern>
+
+    <!-- Izgara Deseni -->
+    <pattern id="pixel-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#162B4D" stroke-width="1" opacity="0.35" />
+    </pattern>
+
+    <!-- Gradyanlar -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#081426" />
+      <stop offset="50%" stop-color="#0B1D3A" />
+      <stop offset="100%" stop-color="#050E1D" />
+    </linearGradient>
+
+    <linearGradient id="title-gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3C4" />
+      <stop offset="45%" stop-color="#F7C948" />
+      <stop offset="100%" stop-color="#D99B16" />
+    </linearGradient>
+
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3DDC97" stop-opacity="0" />
+      <stop offset="30%" stop-color="#3DDC97" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="70%" stop-color="#3DDC97" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#3DDC97" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Piksel Yıldız Parçası -->
+    <g id="star-icon">
+      <rect x="3" y="0" width="2" height="8" fill="#F7C948" />
+      <rect x="0" y="3" width="8" height="2" fill="#F7C948" />
+      <rect x="2" y="2" width="4" height="4" fill="#FFE885" />
+    </g>
+
+    <!-- Piksel Köşe Deseni -->
+    <g id="pixel-corner">
+      <rect x="0" y="0" width="6" height="2" fill="#F7C948" />
+      <rect x="0" y="2" width="2" height="4" fill="#F7C948" />
+    </g>
+  </defs>
+
+  <style>
+    /* Tipografi ve Genel Piksel Ayarları */
+    .pixel-text {
+      font-family: 'Courier New', Consolas, 'Segoe UI', monospace;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-rendering: geometricPrecision;
+    }
+    .crisp {
+      shape-rendering: crispEdges;
+    }
+
+    /* Animasyonlar */
+    /* 1. Görev Seçim Çerçevesi Dolaşımı (Kart 1 -&gt; Kart 2 -&gt; Kart 3 -&gt; Kart 1) */
+    @keyframes selectorLoop {
+      0%, 28% {
+        transform: translate(0px, 0px);
+      }
+      33.3%, 61% {
+        transform: translate(282px, 0px);
+      }
+      66.6%, 94% {
+        transform: translate(564px, 0px);
+      }
+      100% {
+        transform: translate(0px, 0px);
+      }
+    }
+    .selector-anim {
+      animation: selectorLoop 9s cubic-bezier(0.68, -0.2, 0.27, 1.25) infinite;
+    }
+
+    /* 2. Seçici Köşe Nabzı */
+    @keyframes pulseSelect {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #F7C948); }
+      50% { opacity: 0.45; filter: drop-shadow(0 0 0px #F7C948); }
+    }
+    .pulse-corners {
+      animation: pulseSelect 1.1s ease-in-out infinite;
+    }
+
+    /* 3. Yanıp Sönen Metinler (PRESS START, REC, vb.) */
+    @keyframes retroBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .blink {
+      animation: retroBlink 1.1s steps(1, start) infinite;
+    }
+
+    /* 4. Kale Bayrağı Dalgalanması */
+    @keyframes flagWave {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(0.72) skewY(4deg); }
+    }
+    .flag-wave {
+      transform-origin: 158px 146px;
+      animation: flagWave 1.4s ease-in-out infinite;
+    }
+
+    /* 5. Ajan Ağı Radyo Dalgası */
+    @keyframes signalPulse {
+      0% { r: 3; opacity: 1; stroke-width: 2; }
+      100% { r: 24; opacity: 0; stroke-width: 1; }
+    }
+    .wave-1 {
+      animation: signalPulse 2.4s ease-out infinite;
+    }
+    .wave-2 {
+      animation: signalPulse 2.4s ease-out 0.8s infinite;
+    }
+    .wave-3 {
+      animation: signalPulse 2.4s ease-out 1.6s infinite;
+    }
+
+    /* 6. Dijital İkiz Tarayıcı Lazer Çizgisi */
+    @keyframes laserSweep {
+      0%, 100% { transform: translateY(0px); opacity: 0.8; }
+      50% { transform: translateY(52px); opacity: 1; }
+    }
+    .laser-line {
+      animation: laserSweep 3s ease-in-out infinite;
+    }
+
+    /* 7. XP Barı Dolum Işıltısı */
+    @keyframes xpGlint {
+      0% { transform: translateX(-100px); }
+      50%, 100% { transform: translateX(260px); }
+    }
+    .xp-glint {
+      animation: xpGlint 3.6s ease-in-out infinite;
+    }
+
+    /* 8. Üst Seviye Durum Işığı */
+    @keyframes ledBlink {
+      0%, 100% { fill: #3DDC97; filter: drop-shadow(0 0 3px #3DDC97); }
+      50% { fill: #164E38; filter: none; }
+    }
+    .led-live {
+      animation: ledBlink 1.8s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- ==================== ARKA PLAN & ARCADE KABİN ==================== -->
+  <!-- Kök Arka Plan -->
+  <rect width="880" height="520" fill="url(#bg-grad)" />
+  <rect width="880" height="520" fill="url(#pixel-grid)" />
+
+  <!-- Dış Arcade Bezel / Piksel Çerçeve -->
+  <g class="crisp">
+    <!-- Ana Dış Çerçeve Sınırı -->
+    <rect x="8" y="8" width="864" height="504" fill="none" stroke="#162B4D" stroke-width="2" />
+    <rect x="12" y="12" width="856" height="496" fill="none" stroke="#0F2038" stroke-width="2" />
+    <!-- 4 Köşe Vidası / Piksel Rozetleri -->
+    <rect x="16" y="16" width="6" height="6" fill="#F7C948" />
+    <rect x="18" y="18" width="2" height="2" fill="#0B1D3A" />
+    <rect x="858" y="16" width="6" height="6" fill="#F7C948" />
+    <rect x="860" y="18" width="2" height="2" fill="#0B1D3A" />
+    <rect x="16" y="498" width="6" height="6" fill="#F7C948" />
+    <rect x="18" y="500" width="2" height="2" fill="#0B1D3A" />
+    <rect x="858" y="498" width="6" height="6" fill="#F7C948" />
+    <rect x="860" y="500" width="2" height="2" fill="#0B1D3A" />
+  </g>
+
+  <!-- ==================== ÜST BAŞLIK & MARQUEE BÖLÜMÜ (y: 18-92) ==================== -->
+  <g class="crisp">
+    <!-- Üst Statü Barı -->
+    <rect x="30" y="16" width="820" height="18" fill="#061224" stroke="#1E3A5F" stroke-width="1" />
+    <!-- Canlı LED -->
+    <rect class="led-live" x="38" y="21" width="8" height="8" />
+    <text x="52" y="30" fill="#3DDC97" class="pixel-text" font-size="12">READY</text>
+    <text x="105" y="30" fill="#F5F5F5" class="pixel-text" font-size="12">OYUNCU 1: @MehmetKoc16</text>
+    <text x="310" y="30" fill="#F7C948" class="pixel-text" font-size="12">[LOKASYON: TÜRKİYE]</text>
+    <text x="736" y="30" fill="#E4572E" class="pixel-text blink" font-size="12">● CANLI YAYIN</text>
+  </g>
+
+  <!-- Arcade Marquee Başlığı: MEHMET KOÇ -->
+  <g>
+    <!-- 3B Piksel Gölge Katmanı -->
+    <text x="442" y="58" text-anchor="middle" class="pixel-text" font-size="26" font-weight="900" fill="#E4572E" letter-spacing="4">MEHMET KOÇ</text>
+    <text x="441" y="57" text-anchor="middle" class="pixel-text" font-size="26" font-weight="900" fill="#081426" letter-spacing="4">MEHMET KOÇ</text>
+    <!-- Ana Başlık Metni -->
+    <text x="440" y="56" text-anchor="middle" class="pixel-text" font-size="26" font-weight="900" fill="url(#title-gold)" letter-spacing="4">MEHMET KOÇ</text>
+
+    <!-- Yan Pixel Dekorasyon Çubukları -->
+    <g class="crisp">
+      <rect x="200" y="49" width="32" height="4" fill="#F7C948" />
+      <rect x="208" y="45" width="24" height="4" fill="#E4572E" />
+      <rect x="648" y="49" width="32" height="4" fill="#F7C948" />
+      <rect x="648" y="45" width="24" height="4" fill="#E4572E" />
+    </g>
+
+    <!-- Kısa Tanım / Bio Metni -->
+    <text x="440" y="74" text-anchor="middle" class="pixel-text" font-size="12" fill="#F5F5F5" letter-spacing="0.5">
+      "Mobil, backend ve yapay zekâ araçları geliştiriyorum"
+    </text>
+
+    <!-- Alt Banner: GÖREV SEÇİM EKRANI -->
+    <g class="crisp">
+      <rect x="270" y="81" width="340" height="15" fill="#162B4D" stroke="#3DDC97" stroke-width="1" />
+    </g>
+    <text x="440" y="92" text-anchor="middle" class="pixel-text" font-size="12" fill="#3DDC97">
+      ► GÖREV SEÇİM EKRANI // STAGE SELECT ◄
+    </text>
+  </g>
+
+  <!-- ==================== ORTA: 3 BÜYÜK GÖREV KARTI (y: 100 - 340) ==================== -->
+
+  <!-- KART 1: FİNANS KALESİ (SmartFinance + Mobile) -->
+  <g id="card-1">
+    <!-- Kart Tabanı -->
+    <rect class="crisp" x="30" y="100" width="256" height="240" fill="#09182E" stroke="#1E3A5F" stroke-width="2" />
+    <rect class="crisp" x="34" y="104" width="248" height="232" fill="#061224" />
+
+    <!-- Başlık Şeridi -->
+    <rect class="crisp" x="34" y="104" width="248" height="26" fill="#162B4D" />
+    <rect class="crisp" x="40" y="110" width="14" height="14" fill="#E4572E" />
+    <text x="44" y="122" class="pixel-text" font-size="12" fill="#FFFFFF">1</text>
+    <text x="60" y="121" class="pixel-text" font-size="12" fill="#F7C948">GÖREV 1: FİNANS KALESİ</text>
+
+    <!-- Piksel Sahnesi Kutusu (Piksel Kale) -->
+    <rect class="crisp" x="44" y="136" width="228" height="76" fill="#040D1A" stroke="#162B4D" stroke-width="1" />
+    <!-- Ay ve Gece Gökyüzü Pikselleri -->
+    <rect class="crisp" x="240" y="142" width="8" height="8" fill="#F7C948" />
+    <rect class="crisp" x="242" y="144" width="4" height="4" fill="#040D1A" />
+    <rect class="crisp" x="60" y="146" width="2" height="2" fill="#F5F5F5" opacity="0.6" />
+    <rect class="crisp" x="100" y="142" width="2" height="2" fill="#F5F5F5" opacity="0.8" />
+    <rect class="crisp" x="210" y="150" width="2" height="2" fill="#F5F5F5" opacity="0.7" />
+
+    <!-- Piksel Kale İkonu -->
+    <g class="crisp">
+      <!-- Bayrak Direği ve Dalgalanan Bayrak -->
+      <rect x="156" y="142" width="2" height="16" fill="#F5F5F5" />
+      <g class="flag-wave">
+        <polygon points="158,142 172,146 158,150" fill="#E4572E" />
+      </g>
+      <!-- Sol Kule -->
+      <rect x="126" y="160" width="6" height="6" fill="#5B708B" />
+      <rect x="136" y="160" width="6" height="6" fill="#5B708B" />
+      <rect x="126" y="166" width="16" height="34" fill="#3A4D66" />
+      <rect x="131" y="174" width="4" height="8" fill="#F7C948" />
+      <!-- Sağ Kule -->
+      <rect x="174" y="160" width="6" height="6" fill="#5B708B" />
+      <rect x="184" y="160" width="6" height="6" fill="#5B708B" />
+      <rect x="174" y="166" width="16" height="34" fill="#3A4D66" />
+      <rect x="181" y="174" width="4" height="8" fill="#F7C948" />
+      <!-- Ana Kale Duvarı & Mazgallar -->
+      <rect x="142" y="154" width="6" height="6" fill="#758EA8" />
+      <rect x="152" y="154" width="6" height="6" fill="#758EA8" />
+      <rect x="162" y="154" width="6" height="6" fill="#758EA8" />
+      <rect x="142" y="160" width="32" height="40" fill="#4B6079" />
+      <rect x="146" y="166" width="24" height="34" fill="#2E3F54" />
+      <!-- Kasa Kapısı / Altın Kapı -->
+      <rect x="152" y="180" width="12" height="20" fill="#F7C948" />
+      <rect x="156" y="184" width="4" height="12" fill="#0B1D3A" />
+      <!-- Altın Parıltı Pikselleri -->
+      <rect x="110" y="194" width="6" height="4" fill="#F7C948" />
+      <rect x="198" y="194" width="6" height="4" fill="#F7C948" />
+    </g>
+
+    <!-- Proje Bilgileri -->
+    <text x="44" y="230" class="pixel-text" font-size="14" fill="#FFFFFF">SmartFinance</text>
+    <text x="44" y="248" class="pixel-text" font-size="12" fill="#3DDC97">&amp; Mobile (Flutter)</text>
+    <text x="44" y="270" class="pixel-text" font-size="12" fill="#B4C6DE">Kişisel Finans API'si</text>
+    <text x="44" y="286" class="pixel-text" font-size="12" fill="#7E96B5">Clean Arch + .NET 9</text>
+
+    <!-- Zorluk Seviyesi & Teknoloji Rozetleri -->
+    <g class="crisp">
+      <rect x="44" y="296" width="68" height="18" fill="#162B4D" />
+      <text x="50" y="310" class="pixel-text" font-size="12" fill="#F7C948">C# .NET</text>
+      <rect x="118" y="296" width="68" height="18" fill="#162B4D" />
+      <text x="124" y="310" class="pixel-text" font-size="12" fill="#3DDC97">DART</text>
+    </g>
+    <text x="44" y="328" class="pixel-text" font-size="12" fill="#F7C948">ZORLUK: ★★★★★</text>
+  </g>
+
+  <!-- KART 2: AJAN AĞI (Agent-message) -->
+  <g id="card-2">
+    <!-- Kart Tabanı -->
+    <rect class="crisp" x="312" y="100" width="256" height="240" fill="#09182E" stroke="#1E3A5F" stroke-width="2" />
+    <rect class="crisp" x="316" y="104" width="248" height="232" fill="#061224" />
+
+    <!-- Başlık Şeridi -->
+    <rect class="crisp" x="316" y="104" width="248" height="26" fill="#162B4D" />
+    <rect class="crisp" x="322" y="110" width="14" height="14" fill="#3DDC97" />
+    <text x="326" y="122" class="pixel-text" font-size="12" fill="#0B1D3A">2</text>
+    <text x="342" y="121" class="pixel-text" font-size="12" fill="#F7C948">GÖREV 2: AJAN AĞI</text>
+
+    <!-- Piksel Sahnesi Kutusu (Anten & Ajan Düğümleri) -->
+    <rect class="crisp" x="326" y="136" width="228" height="76" fill="#040D1A" stroke="#162B4D" stroke-width="1" />
+
+    <!-- Ajan Ağı Görseli -->
+    <g>
+      <!-- Merkez Verici Anten -->
+      <g class="crisp">
+        <rect x="438" y="172" width="4" height="28" fill="#5B708B" />
+        <rect x="432" y="196" width="16" height="4" fill="#3A4D66" />
+        <rect x="430" y="168" width="20" height="4" fill="#3DDC97" />
+        <rect x="438" y="160" width="4" height="8" fill="#F7C948" />
+        <!-- Anten Tepe Parıltısı -->
+        <rect x="439" y="158" width="2" height="2" fill="#FFFFFF" />
+      </g>
+      <!-- Genişleyen Radyo Dalgaları (Animasyonlu Halka) -->
+      <circle class="wave-1" cx="440" cy="159" r="6" fill="none" stroke="#3DDC97" />
+      <circle class="wave-2" cx="440" cy="159" r="6" fill="none" stroke="#3DDC97" />
+      <circle class="wave-3" cx="440" cy="159" r="6" fill="none" stroke="#F7C948" />
+
+      <!-- Yan Ajan Düğümleri (Piksel Terminaller) -->
+      <g class="crisp">
+        <!-- Sol Düğüm (Agent A) -->
+        <line x1="366" y1="178" x2="430" y2="170" stroke="#1E3A5F" stroke-dasharray="2,2" stroke-width="1" />
+        <rect x="352" y="170" width="16" height="14" fill="#162B4D" stroke="#3DDC97" stroke-width="1" />
+        <rect x="356" y="174" width="8" height="6" fill="#3DDC97" />
+        <text x="354" y="194" class="pixel-text" font-size="12" fill="#7E96B5">AI-1</text>
+
+        <!-- Sağ Düğüm (Agent B) -->
+        <line x1="514" y1="178" x2="450" y2="170" stroke="#1E3A5F" stroke-dasharray="2,2" stroke-width="1" />
+        <rect x="512" y="170" width="16" height="14" fill="#162B4D" stroke="#E4572E" stroke-width="1" />
+        <rect x="516" y="174" width="8" height="6" fill="#E4572E" />
+        <text x="510" y="194" class="pixel-text" font-size="12" fill="#7E96B5">AI-2</text>
+      </g>
+    </g>
+
+    <!-- Proje Bilgileri -->
+    <text x="326" y="230" class="pixel-text" font-size="14" fill="#FFFFFF">Agent-message</text>
+    <text x="326" y="248" class="pixel-text" font-size="12" fill="#3DDC97">Canlı Relay Ağı</text>
+    <text x="326" y="270" class="pixel-text" font-size="12" fill="#B4C6DE">Farklı Cihazlardaki</text>
+    <text x="326" y="286" class="pixel-text" font-size="12" fill="#7E96B5">AI Ajanları Canlı Mesaj</text>
+
+    <!-- Rozetler & Zorluk Seviyesi -->
+    <g class="crisp">
+      <rect x="326" y="296" width="68" height="18" fill="#162B4D" />
+      <text x="346" y="310" class="pixel-text" font-size="12" fill="#3DDC97">GO</text>
+      <rect x="400" y="296" width="76" height="18" fill="#162B4D" />
+      <text x="406" y="310" class="pixel-text" font-size="12" fill="#F7C948">RELAY</text>
+    </g>
+    <text x="326" y="328" class="pixel-text" font-size="12" fill="#F7C948">ZORLUK: ★★★★☆</text>
+  </g>
+
+  <!-- KART 3: DİJİTAL İKİZ (3D-Twin) -->
+  <g id="card-3">
+    <!-- Kart Tabanı -->
+    <rect class="crisp" x="594" y="100" width="256" height="240" fill="#09182E" stroke="#1E3A5F" stroke-width="2" />
+    <rect class="crisp" x="598" y="104" width="248" height="232" fill="#061224" />
+
+    <!-- Başlık Şeridi -->
+    <rect class="crisp" x="598" y="104" width="248" height="26" fill="#162B4D" />
+    <rect class="crisp" x="604" y="110" width="14" height="14" fill="#F7C948" />
+    <text x="608" y="122" class="pixel-text" font-size="12" fill="#0B1D3A">3</text>
+    <text x="624" y="121" class="pixel-text" font-size="12" fill="#F7C948">GÖREV 3: DİJİTAL İKİZ</text>
+
+    <!-- Piksel Sahnesi Kutusu (3B İkiz / Avatar ve Tarama Lazerli Kabin) -->
+    <rect class="crisp" x="608" y="136" width="228" height="76" fill="#040D1A" stroke="#162B4D" stroke-width="1" />
+
+    <!-- 3D Izgara Zemin & Avatar Silüeti -->
+    <g>
+      <!-- Perspektif Piksel Zemin -->
+      <line x1="630" y1="204" x2="814" y2="204" stroke="#162B4D" stroke-width="1" />
+      <line x1="640" y1="198" x2="804" y2="198" stroke="#162B4D" stroke-width="1" />
+      <line x1="670" y1="204" x2="685" y2="194" stroke="#162B4D" stroke-width="1" />
+      <line x1="722" y1="204" x2="722" y2="194" stroke="#162B4D" stroke-width="1" />
+      <line x1="774" y1="204" x2="759" y2="194" stroke="#162B4D" stroke-width="1" />
+
+      <!-- Piksel İnsan Figürü (Avatar) -->
+      <g class="crisp">
+        <!-- Baş -->
+        <rect x="718" y="146" width="8" height="8" fill="#3DDC97" />
+        <rect x="720" y="148" width="4" height="4" fill="#FFFFFF" />
+        <!-- Gövde -->
+        <rect x="716" y="156" width="12" height="16" fill="#3DDC97" />
+        <rect x="718" y="158" width="8" height="12" fill="#2AA36E" />
+        <!-- Kollar -->
+        <rect x="710" y="158" width="4" height="14" fill="#3DDC97" />
+        <rect x="730" y="158" width="4" height="14" fill="#3DDC97" />
+        <!-- Bacaklar -->
+        <rect x="716" y="174" width="4" height="18" fill="#3DDC97" />
+        <rect x="724" y="174" width="4" height="18" fill="#3DDC97" />
+        <!-- 3B Koordinat Köşeleri -->
+        <rect x="696" y="144" width="4" height="2" fill="#F7C948" />
+        <rect x="696" y="144" width="2" height="4" fill="#F7C948" />
+        <rect x="744" y="144" width="4" height="2" fill="#F7C948" />
+        <rect x="746" y="144" width="2" height="4" fill="#F7C948" />
+      </g>
+
+      <!-- Dikey Tarayıcı Lazer Çizgisi (Animasyonlu) -->
+      <g class="laser-line">
+        <rect x="680" y="144" width="84" height="2" fill="url(#laser-grad)" />
+      </g>
+    </g>
+
+    <!-- Proje Bilgileri -->
+    <text x="608" y="230" class="pixel-text" font-size="14" fill="#FFFFFF">3D-Twin</text>
+    <text x="608" y="248" class="pixel-text" font-size="12" fill="#3DDC97">Web Sanal Kabin</text>
+    <text x="608" y="270" class="pixel-text" font-size="12" fill="#B4C6DE">Vücut Ölçülerinden</text>
+    <text x="608" y="286" class="pixel-text" font-size="12" fill="#7E96B5">3B Dijital İkiz Üretimi</text>
+
+    <!-- Rozetler & Zorluk Seviyesi -->
+    <g class="crisp">
+      <rect x="608" y="296" width="74" height="18" fill="#162B4D" />
+      <text x="614" y="310" class="pixel-text" font-size="12" fill="#F7C948">PYTHON</text>
+      <rect x="688" y="296" width="60" height="18" fill="#162B4D" />
+      <text x="698" y="310" class="pixel-text" font-size="12" fill="#3DDC97">WEB</text>
+    </g>
+    <text x="608" y="328" class="pixel-text" font-size="12" fill="#F7C948">ZORLUK: ★★★★★</text>
+  </g>
+
+  <!-- ==================== HAREKETLİ SEÇİM İMLECİ & ÇERÇEVESİ ==================== -->
+  <!-- Bu grup 3 kart arasında 9 saniyelik döngüyle sırayla gezer -->
+  <g class="selector-anim crisp">
+    <!-- Seçim Çerçevesi (Kart 1 başlangıç koordinatları: x=26, y=96, w=264, h=248) -->
+    <rect x="26" y="96" width="264" height="248" fill="none" stroke="#F7C948" stroke-width="2" />
+    <rect x="24" y="94" width="268" height="252" fill="none" stroke="#E4572E" stroke-width="1" opacity="0.6" />
+
+    <!-- 4 Yanıp Sönen Piksel Köşesi -->
+    <g class="pulse-corners">
+      <!-- Sol Üst -->
+      <rect x="20" y="90" width="12" height="4" fill="#F7C948" />
+      <rect x="20" y="94" width="4" height="8" fill="#F7C948" />
+      <!-- Sağ Üst -->
+      <rect x="284" y="90" width="12" height="4" fill="#F7C948" />
+      <rect x="292" y="94" width="4" height="8" fill="#F7C948" />
+      <!-- Sol Alt -->
+      <rect x="20" y="346" width="4" height="8" fill="#F7C948" />
+      <rect x="20" y="350" width="12" height="4" fill="#F7C948" />
+      <!-- Sağ Alt -->
+      <rect x="292" y="346" width="4" height="8" fill="#F7C948" />
+      <rect x="284" y="350" width="12" height="4" fill="#F7C948" />
+    </g>
+
+    <!-- Kart Üstü Ok / Gösterge -->
+    <g transform="translate(148, 88)">
+      <polygon points="0,0 20,0 10,8" fill="#F7C948" />
+      <rect x="6" y="-8" width="8" height="8" fill="#E4572E" />
+    </g>
+  </g>
+
+  <!-- ==================== ALT BÖLÜM: YAN GÖREVLER (y: 352 - 438) ==================== -->
+  <g class="crisp">
+    <!-- Yan Görevler Çerçevesi -->
+    <rect x="30" y="352" width="820" height="86" fill="#07152B" stroke="#162B4D" stroke-width="1" />
+    <!-- Mini Başlık -->
+    <rect x="30" y="352" width="820" height="18" fill="#0F2440" />
+    <text x="44" y="365" class="pixel-text" font-size="12" fill="#F7C948">
+      ⚔ YAN GÖREVLER &amp; DİĞER ÇALIŞMALAR [SIDE QUESTS]
+    </text>
+    <text x="734" y="365" class="pixel-text" font-size="12" fill="#3DDC97">
+      [SLOT: 4/4 AKTİF]
+    </text>
+
+    <!-- 4 Yan Görev Kutucuğu -->
+    <!-- Yan Görev 1: Manhwa Çeviri -->
+    <rect x="42" y="376" width="192" height="52" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+    <text x="50" y="392" class="pixel-text" font-size="12" fill="#FFFFFF">Manhwa Çeviri</text>
+    <text x="180" y="392" class="pixel-text" font-size="12" fill="#F7C948">PY</text>
+    <text x="50" y="407" class="pixel-text" font-size="12" fill="#7E96B5">Webtoon balon çeviri</text>
+    <text x="50" y="420" class="pixel-text" font-size="12" fill="#3DDC97">Yerel model / Eklenti</text>
+
+    <!-- Yan Görev 2: pdf-toc-wizard -->
+    <rect x="246" y="376" width="192" height="52" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+    <text x="254" y="392" class="pixel-text" font-size="12" fill="#FFFFFF">pdf-toc-wizard</text>
+    <text x="390" y="392" class="pixel-text" font-size="12" fill="#F7C948">PY</text>
+    <text x="254" y="407" class="pixel-text" font-size="12" fill="#7E96B5">Tıklanabilir içindekiler</text>
+    <text x="254" y="420" class="pixel-text" font-size="12" fill="#3DDC97">Otomatik PDF dizini</text>
+
+    <!-- Yan Görev 3: Eczane -->
+    <rect x="450" y="376" width="192" height="52" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+    <text x="458" y="392" class="pixel-text" font-size="12" fill="#FFFFFF">Eczane Mobil</text>
+    <text x="578" y="392" class="pixel-text" font-size="12" fill="#3DDC97">FLUTTER</text>
+    <text x="458" y="407" class="pixel-text" font-size="12" fill="#7E96B5">Nöbetçi eczaneler</text>
+    <text x="458" y="420" class="pixel-text" font-size="12" fill="#F7C948">Canlı harita &amp; liste</text>
+
+    <!-- Yan Görev 4: GameJam / Yanki -->
+    <rect x="654" y="376" width="186" height="52" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+    <text x="662" y="392" class="pixel-text" font-size="12" fill="#FFFFFF">GameJam / Yanki</text>
+    <text x="794" y="392" class="pixel-text" font-size="12" fill="#E4572E">UNITY</text>
+    <text x="662" y="407" class="pixel-text" font-size="12" fill="#7E96B5">ShaderLab, C#, Jam</text>
+    <text x="662" y="420" class="pixel-text" font-size="12" fill="#3DDC97">Özgün oyun mekaniği</text>
+  </g>
+
+  <!-- ==================== EN ALT: ARCADE HUD & STATUS BAR (y: 446 - 504) ==================== -->
+  <g class="crisp">
+    <!-- Alt HUD Şerit Paneli -->
+    <rect x="30" y="446" width="820" height="58" fill="#05101F" stroke="#162B4D" stroke-width="1" />
+
+    <!-- SOL: Katkı / XP Seviyesi ve Barı -->
+    <text x="44" y="466" class="pixel-text" font-size="12" fill="#F7C948">XP (KATKI): 948</text>
+
+    <!-- XP İlerleme Çubuğu Çerçevesi -->
+    <rect x="44" y="472" width="168" height="12" fill="#091A33" stroke="#162B4D" stroke-width="1" />
+    <!-- Doluluk (%94.8 = ~159px) -->
+    <rect x="46" y="474" width="159" height="8" fill="#3DDC97" />
+    <!-- XP Çubuğu Parlama Efekti -->
+    <g overflow="hidden">
+      <rect class="xp-glint" x="46" y="474" width="20" height="8" fill="#FFFFFF" opacity="0.4" />
+    </g>
+
+    <!-- ORTA: İstatistik Sayıcıları (Yıldız, Takipçi, Depo) -->
+    <g transform="translate(240, 448)">
+      <!-- Yıldız -->
+      <rect x="0" y="8" width="68" height="34" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+      <text x="8" y="22" class="pixel-text" font-size="12" fill="#F7C948">★ YILDIZ</text>
+      <text x="28" y="37" class="pixel-text" font-size="13" fill="#FFFFFF">6</text>
+
+      <!-- Lonca / Takipçi -->
+      <rect x="76" y="8" width="76" height="34" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+      <text x="84" y="22" class="pixel-text" font-size="12" fill="#3DDC97">LONCA</text>
+      <text x="100" y="37" class="pixel-text" font-size="13" fill="#FFFFFF">15</text>
+
+      <!-- Depo / Repo Sayısı -->
+      <rect x="160" y="8" width="68" height="34" fill="#091A33" stroke="#1E3A5F" stroke-width="1" />
+      <text x="168" y="22" class="pixel-text" font-size="12" fill="#7E96B5">DEPO</text>
+      <text x="186" y="37" class="pixel-text" font-size="13" fill="#FFFFFF">19</text>
+    </g>
+
+    <!-- ORTA-SAĞ: Diller Mini HUD Dağılımı -->
+    <g transform="translate(485, 452)">
+      <text x="0" y="14" class="pixel-text" font-size="12" fill="#7E96B5">DİL DAĞILIMI:</text>
+      <!-- Mini Piksel Renk Çubuğu -->
+      <rect x="0" y="20" width="62" height="6" fill="#F7C948" />   <!-- Python %33 -->
+      <rect x="63" y="20" width="30" height="6" fill="#3DDC97" />  <!-- TS %16 -->
+      <rect x="94" y="20" width="22" height="6" fill="#E4572E" />  <!-- ShaderLab %12 -->
+      <rect x="117" y="20" width="20" height="6" fill="#5B708B" /> <!-- C# %11 -->
+      <rect x="138" y="20" width="15" height="6" fill="#00B4D8" /> <!-- Dart %8 -->
+      <rect x="154" y="20" width="34" height="6" fill="#3A4D66" /> <!-- Diğer %20 -->
+      <text x="0" y="38" class="pixel-text" font-size="11" fill="#B4C6DE">PY 33 · TS 16 · SL 12 · C# 11 · DT 8</text>
+    </g>
+
+    <!-- SAĞ: Retro Yanıp Sönen "INSERT COIN / PRESS START" -->
+    <g transform="translate(710, 456)">
+      <rect x="0" y="0" width="130" height="38" fill="#162B4D" stroke="#E4572E" stroke-width="1" />
+      <text x="65" y="18" text-anchor="middle" class="pixel-text blink" font-size="12" fill="#F7C948">
+        PRESS START
+      </text>
+      <text x="65" y="31" text-anchor="middle" class="pixel-text" font-size="12" fill="#3DDC97">
+        [CREDIT: 01]
+      </text>
+    </g>
+  </g>
+
+  <!-- ==================== CRT TARAMA ÇİZGİLERİ KATMANI ==================== -->
+  <!-- Tüm ekranın üstüne binen hafif retro CRT televizyon tarama çizgileri -->
+  <rect width="880" height="520" fill="url(#scanlines)" pointer-events="none" />
+</svg>
