@@ -1,701 +1,404 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" width="880" height="520" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
   <defs>
-    <!-- CSS Animasyon ve Tipografi Tanımları -->
+    <!-- Harita Arka Plan Grid Deseni -->
+    <pattern id="metro-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#E2E2DC" />
+    </pattern>
+
+    <!-- Kayan Tabela Kırpma Alanı -->
+    <clipPath id="ticker-clip">
+      <rect x="175" y="518" width="675" height="28" />
+    </clipPath>
+
+    <!-- Kart Gölgelendirme Filtresi -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1A1A1A" flood-opacity="0.08" />
+    </filter>
+
     <style>
-      @keyframes lampFlicker {
-        0%, 100% { opacity: 0.92; }
-        25% { opacity: 0.98; }
-        50% { opacity: 0.88; }
-        75% { opacity: 0.95; }
-        82% { opacity: 0.84; }
-        85% { opacity: 0.97; }
-      }
-
-      @keyframes lampBulbPulse {
-        0%, 100% { fill: #FFF3D6; }
-        50% { fill: #FFE29F; }
-      }
-
-      @keyframes catBreathe {
-        0%, 100% { transform: scaleY(1); }
-        50% { transform: scaleY(1.08) translateY(-1px); }
-      }
-
-      @keyframes catTail {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(-5deg); }
-      }
-
-      @keyframes zzzFloat1 {
-        0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
-        30% { opacity: 0.9; }
-        80% { opacity: 0.8; }
-        100% { opacity: 0; transform: translate(14px, -24px) scale(1.1); }
-      }
-
-      @keyframes zzzFloat2 {
-        0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
-        40% { opacity: 0.85; }
-        85% { opacity: 0.7; }
-        100% { opacity: 0; transform: translate(18px, -32px) scale(1.2); }
-      }
-
-      @keyframes commitScroll {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-176px); }
-      }
-
-      @keyframes steamDrift1 {
-        0% { opacity: 0; transform: translate(0, 0); }
-        40% { opacity: 0.7; }
-        80% { opacity: 0.4; }
-        100% { opacity: 0; transform: translate(-3px, -20px); }
-      }
-
-      @keyframes steamDrift2 {
-        0% { opacity: 0; transform: translate(0, 0); }
-        35% { opacity: 0.8; }
-        75% { opacity: 0.3; }
-        100% { opacity: 0; transform: translate(4px, -22px); }
-      }
-
-      @keyframes starBlink1 {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
-      }
-
-      @keyframes starBlink2 {
-        0%, 100% { opacity: 0.9; }
-        50% { opacity: 0.2; }
-      }
-
-      @keyframes starBlink3 {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 0.95; }
-      }
-
-      @keyframes phoneCursorBlink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-      }
-
-      @keyframes calRadar {
-        0% { transform: translateX(0); opacity: 0.9; }
-        90% { opacity: 0.9; }
-        100% { transform: translateX(270px); opacity: 0; }
-      }
-
-      .lamp-glow {
-        animation: lampFlicker 7s ease-in-out infinite;
-        transform-origin: 730px 220px;
-      }
-      .lamp-bulb {
-        animation: lampBulbPulse 3.5s ease-in-out infinite;
-      }
-      .cat-body-anim {
-        animation: catBreathe 4.5s ease-in-out infinite;
-        transform-origin: 150px 338px;
-      }
-      .cat-tail-anim {
-        animation: catTail 4.5s ease-in-out infinite;
-        transform-origin: 196px 334px;
-      }
-      .zzz-1 {
-        animation: zzzFloat1 4.5s linear infinite;
-      }
-      .zzz-2 {
-        animation: zzzFloat2 4.5s linear infinite 2.2s;
-      }
-      .commit-terminal {
-        animation: commitScroll 14s linear infinite;
-      }
-      .steam-1 {
-        animation: steamDrift1 3.2s ease-out infinite;
-      }
-      .steam-2 {
-        animation: steamDrift2 3.8s ease-out infinite 1.6s;
-      }
-      .star-1 { animation: starBlink1 3.2s ease-in-out infinite; }
-      .star-2 { animation: starBlink2 4.1s ease-in-out infinite 0.7s; }
-      .star-3 { animation: starBlink3 2.7s ease-in-out infinite 1.4s; }
-      .phone-led { animation: phoneCursorBlink 1.4s steps(1) infinite; }
-      .cal-scan-line { animation: calRadar 8s linear infinite; }
-
-      .mono-txt {
-        font-family: 'Consolas', 'Courier New', ui-monospace, monospace;
-      }
-      .sans-txt {
+      text {
         font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        text-rendering: geometricPrecision;
       }
-      .pixel-title {
-        font-family: 'Consolas', 'Segoe UI', monospace;
+      .line-label {
+        font-size: 12px;
         font-weight: 700;
-        letter-spacing: 0.5px;
+        fill: #FFFFFF;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+      .station-title {
+        font-size: 13px;
+        font-weight: 700;
+        fill: #1A1A1A;
+      }
+      .station-sub {
+        font-size: 12px;
+        font-weight: 400;
+        fill: #555555;
+      }
+      .badge-text {
+        font-size: 12px;
+        font-weight: 600;
       }
     </style>
-
-    <!-- Kırpma Alanları -->
-    <clipPath id="monitor-screen-clip">
-      <rect x="238" y="222" width="334" height="92" />
-    </clipPath>
-
-    <clipPath id="window-sky-clip">
-      <rect x="358" y="86" width="176" height="106" />
-    </clipPath>
-
-    <clipPath id="calendar-clip">
-      <rect x="46" y="186" width="268" height="34" />
-    </clipPath>
-
-    <!-- Lamba Işık Konisi Gradyanı -->
-    <linearGradient id="lampConeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FF9F43" stop-opacity="0.55" />
-      <stop offset="50%" stop-color="#FF9F43" stop-opacity="0.26" />
-      <stop offset="100%" stop-color="#FF9F43" stop-opacity="0.02" />
-    </linearGradient>
-
-    <!-- Ekran Işıma Gradyanı -->
-    <radialGradient id="screenGlowGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#48DBFB" stop-opacity="0.22" />
-      <stop offset="100%" stop-color="#48DBFB" stop-opacity="0" />
-    </radialGradient>
   </defs>
 
-  <!-- ==================== 1. ARKA PLAN VE ODA DUVARI ==================== -->
-  <rect x="0" y="0" width="880" height="520" fill="#141B2D" />
-  <rect x="16" y="16" width="848" height="488" fill="#243346" />
-  
-  <!-- Duvar Gölge ve Çizgileri -->
-  <rect x="16" y="16" width="848" height="4" fill="#1A2533" />
-  <rect x="16" y="16" width="4" height="488" fill="#1A2533" />
-  <rect x="860" y="16" width="4" height="488" fill="#101722" />
+  <!-- 1. ARKA PLAN VE ŞEBEKE IZGARASI -->
+  <rect width="880" height="560" fill="#F2F2EE" />
+  <rect width="880" height="560" fill="url(#metro-grid)" />
 
-  <rect x="20" y="80" width="840" height="2" fill="#2D3F54" />
-  <rect x="20" y="82" width="840" height="2" fill="#1B2634" />
+  <!-- Şehir Sınırları & Nehir Şeridi (Transit Haritası Havası İçin Kıvrımlı Su Yolu) -->
+  <path d="M -20 480 Q 200 470 340 430 T 640 470 T 900 440" fill="none" stroke="#E3EAEF" stroke-width="26" stroke-linecap="round" opacity="0.7" />
+  <text x="790" y="465" font-size="12" font-weight="700" fill="#B0C4DE" letter-spacing="2">BOĞAZ HATTI</text>
 
-  <!-- Zemin (Ahşap Parke Kesiti) -->
-  <rect x="20" y="470" width="840" height="34" fill="#3D2413" />
-  <rect x="20" y="470" width="840" height="4" fill="#5C3A1E" />
-  <!-- Parke derz pikselleri -->
-  <rect x="110" y="474" width="2" height="30" fill="#2E1B0E" />
-  <rect x="230" y="474" width="2" height="30" fill="#2E1B0E" />
-  <rect x="360" y="474" width="2" height="30" fill="#2E1B0E" />
-  <rect x="490" y="474" width="2" height="30" fill="#2E1B0E" />
-  <rect x="620" y="474" width="2" height="30" fill="#2E1B0E" />
-  <rect x="740" y="474" width="2" height="30" fill="#2E1B0E" />
+  <!-- 2. SOL ÜST TABELA (METRO GİRİŞİ & PROFİL BAŞLIĞI) -->
+  <g filter="url(#shadow)">
+    <rect x="25" y="22" width="565" height="74" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    
+    <!-- Metro Logo Sembolü -->
+    <circle cx="62" cy="59" r="22" fill="#C0392B" />
+    <rect x="34" y="53" width="56" height="12" rx="3" fill="#2E86DE" />
+    <text x="62" y="60" font-size="13" font-weight="900" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">METRO</text>
 
-  <!-- Süpürgelik -->
-  <rect x="20" y="466" width="840" height="4" fill="#8B5A2B" />
-
-  <!-- Dokuma Piksel Kilim -->
-  <rect x="120" y="468" width="620" height="6" fill="#A06836" />
-  <rect x="140" y="469" width="580" height="4" fill="#FF9F43" opacity="0.8" />
-  <rect x="150" y="470" width="560" height="2" fill="#FFF3D6" opacity="0.6" />
-
-  <!-- ==================== 2. PENCERE VE DIŞ GÖKYÜZÜ ==================== -->
-  <rect x="354" y="82" width="184" height="114" fill="#1A2533" />
-  <rect x="356" y="84" width="180" height="110" fill="#8B5A2B" />
-  <rect x="358" y="86" width="176" height="106" fill="#0D131F" />
-
-  <g clip-path="url(#window-sky-clip)">
-    <!-- Hilal Ay -->
-    <rect x="500" y="96" width="14" height="14" fill="#FFF3D6" />
-    <rect x="498" y="98" width="4" height="10" fill="#FFF3D6" />
-    <rect x="504" y="94" width="8" height="4" fill="#0D131F" />
-    <rect x="502" y="96" width="10" height="14" fill="#0D131F" />
-
-    <!-- Yanıp Sönen Piksel Yıldızlar -->
-    <rect class="star-1" x="372" y="100" width="2" height="2" fill="#FFF3D6" />
-    <rect class="star-2" x="420" y="94" width="3" height="3" fill="#FFE29F" />
-    <rect class="star-3" x="450" y="112" width="2" height="2" fill="#FFF3D6" />
-    <rect class="star-1" x="480" y="130" width="2" height="2" fill="#48DBFB" />
-    <rect class="star-2" x="390" y="140" width="3" height="3" fill="#FFF3D6" />
-    <rect class="star-3" x="434" y="156" width="2" height="2" fill="#FFE29F" />
-    <rect class="star-1" x="510" y="160" width="2" height="2" fill="#FFF3D6" />
-    <rect class="star-2" x="366" y="170" width="2" height="2" fill="#FFF3D6" />
-    <rect class="star-3" x="466" y="142" width="3" height="3" fill="#48DBFB" />
-
-    <!-- Gece Şehir Silüeti -->
-    <rect x="358" y="174" width="30" height="18" fill="#141B2D" />
-    <rect x="388" y="168" width="24" height="24" fill="#182033" />
-    <rect x="412" y="172" width="36" height="20" fill="#141B2D" />
-    <rect x="448" y="164" width="28" height="28" fill="#182033" />
-    <rect x="476" y="170" width="34" height="22" fill="#141B2D" />
-    <rect x="510" y="176" width="24" height="16" fill="#182033" />
-
-    <!-- Şehir Işıkları -->
-    <rect x="394" y="174" width="2" height="2" fill="#FF9F43" opacity="0.8" />
-    <rect x="402" y="180" width="2" height="2" fill="#FECA57" opacity="0.7" />
-    <rect x="454" y="172" width="2" height="2" fill="#FF9F43" opacity="0.8" />
-    <rect x="460" y="178" width="2" height="2" fill="#48DBFB" opacity="0.6" />
+    <!-- Yazılar -->
+    <text x="102" y="47" font-size="20" font-weight="800" fill="#1A1A1A" letter-spacing="0.5">MEHMET KOÇ HATTI</text>
+    <text x="102" y="66" font-size="13" font-weight="500" fill="#4A4A4A">Mobil, backend ve yapay zekâ araçları geliştiriyorum</text>
+    <text x="102" y="83" font-size="12" font-weight="600" fill="#16A085">@MehmetKoc16 · Türkiye · 948 Katkı · 19 Depo · 6 Yıldız</text>
   </g>
 
-  <!-- Pencere Ahşap Çıtaları -->
-  <rect x="444" y="86" width="4" height="106" fill="#8B5A2B" />
-  <rect x="358" y="138" width="176" height="4" fill="#8B5A2B" />
-  <rect x="350" y="190" width="192" height="6" fill="#A06836" />
-  <rect x="350" y="194" width="192" height="2" fill="#5C3A1E" />
+  <!-- 3. SAĞ ÜST: 53 HAFTALIK KATKI MONİTÖRÜ (SİNYAL ÇUBUKLARI) -->
+  <g filter="url(#shadow)">
+    <rect x="605" y="22" width="250" height="74" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    <text x="618" y="40" font-size="12" font-weight="800" fill="#1A1A1A" letter-spacing="0.3">HAFTALIK KATKI</text>
+    <text x="843" y="40" font-size="11.5" font-weight="600" fill="#2E86DE" text-anchor="end">53 hafta · 948 katkı</text>
 
-  <!-- Denizlikte Mini Piksel Sukulent -->
-  <rect x="368" y="182" width="10" height="8" fill="#E67E22" />
-  <rect x="370" y="172" width="6" height="10" fill="#2ECC71" />
-  <rect x="366" y="176" width="4" height="4" fill="#27AE60" />
-  <rect x="376" y="174" width="4" height="4" fill="#27AE60" />
+    <!-- 53 Haftalık Gerçek Veri Çubukları (X: 618'den 841'e) -->
+    <!-- Değerler: 0,0,1,0,28,12,0,0,0,0,0,2,0,4,10,0,0,1,0,0,0,0,7,3,2,8,50,7,0,9,4,0,2,4,17,34,16,3,2,2,3,30,85,48,100,72,57,24,59,96,81,18,47 -->
+    <g>
+      <rect x="618.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="622.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="626.6" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="630.9" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="635.2" y="78" width="2.6" height="7" rx="1" fill="#2E86DE" />
+      <rect x="639.5" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="643.8" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="648.1" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="652.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="656.7" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="661.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="665.3" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="669.6" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="673.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="678.2" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="682.5" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="686.8" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="691.1" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="695.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="699.7" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="704.0" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="708.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="712.6" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="716.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="721.2" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="725.5" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="729.8" y="72" width="2.6" height="13" rx="1" fill="#16A085" />
+      <rect x="734.1" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="738.4" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="742.7" y="81" width="2.6" height="4" rx="1" fill="#2E86DE" />
+      <rect x="747.0" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="751.3" y="83" width="2.6" height="2" rx="1" fill="#E6E6DF" />
+      <rect x="755.6" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="759.9" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="764.2" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="768.5" y="76" width="2.6" height="9" rx="1" fill="#16A085" />
+      <rect x="772.8" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="777.1" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="781.4" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="785.7" y="83" width="2.6" height="2" rx="1" fill="#2E86DE" />
+      <rect x="790.0" y="82" width="2.6" height="3" rx="1" fill="#2E86DE" />
+      <rect x="794.3" y="77" width="2.6" height="8" rx="1" fill="#16A085" />
+      <rect x="798.6" y="66" width="2.6" height="19" rx="1" fill="#C0392B" />
+      <rect x="802.9" y="73" width="2.6" height="12" rx="1" fill="#16A085" />
+      <rect x="807.2" y="63" width="2.6" height="22" rx="1" fill="#C0392B" />
+      <rect x="811.5" y="69" width="2.6" height="16" rx="1" fill="#C0392B" />
+      <rect x="815.8" y="72" width="2.6" height="13" rx="1" fill="#16A085" />
+      <rect x="820.1" y="79" width="2.6" height="6" rx="1" fill="#2E86DE" />
+      <rect x="824.4" y="71" width="2.6" height="14" rx="1" fill="#16A085" />
+      <rect x="828.7" y="64" width="2.6" height="21" rx="1" fill="#C0392B" />
+      <rect x="833.0" y="67" width="2.6" height="18" rx="1" fill="#C0392B" />
+      <rect x="837.3" y="80" width="2.6" height="5" rx="1" fill="#2E86DE" />
+      <rect x="841.6" y="74" width="2.6" height="11" rx="1" fill="#16A085" />
+    </g>
 
-  <!-- ==================== 3. RAFTA 8 PROJE KİTABI / KUTUSU ==================== -->
-  <!-- Ahşap Raf -->
-  <rect x="42" y="148" width="284" height="6" fill="#8B5A2B" />
-  <rect x="42" y="152" width="284" height="2" fill="#5C3A1E" />
-  <rect x="58" y="154" width="4" height="8" fill="#1A2533" />
-  <rect x="58" y="158" width="8" height="4" fill="#1A2533" />
-  <rect x="306" y="154" width="4" height="8" fill="#1A2533" />
-  <rect x="302" y="158" width="8" height="4" fill="#1A2533" />
-
-  <!-- 8 Kitap / Kutu (En küçük font kuralına uygun: 12px ve okunabilir) -->
-  <!-- 1. SmartFinance (C# .NET 9) -->
-  <g id="book-1">
-    <rect x="46" y="74" width="31" height="74" fill="#512BD4" />
-    <rect x="46" y="74" width="4" height="74" fill="#6C40E8" />
-    <rect x="50" y="76" width="25" height="2" fill="#FFF3D6" opacity="0.8" />
-    <text transform="translate(66, 142) rotate(-90)" fill="#FFFFFF" font-size="12" font-weight="bold" class="sans-txt">SmartFin</text>
+    <!-- Radar Tarama Efekti -->
+    <line x1="618" y1="58" x2="618" y2="87" stroke="#C0392B" stroke-width="1.8" opacity="0.8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="224 0" dur="4.8s" repeatCount="indefinite" />
+    </line>
   </g>
 
-  <!-- 2. SmartFinance-Mobile (Flutter/Dart) -->
-  <g id="book-2">
-    <rect x="80" y="72" width="32" height="76" fill="#02569B" />
-    <rect x="80" y="72" width="4" height="76" fill="#29B6F6" />
-    <rect x="84" y="74" width="26" height="2" fill="#FFF3D6" opacity="0.8" />
-    <text transform="translate(101, 142) rotate(-90)" fill="#E1F5FE" font-size="12" font-weight="bold" class="sans-txt">SF-Mobile</text>
+  <!-- 4. METRO HATLARI ALT KORUYUCU KATMANI (BEYAZ KASING - KÖPRÜ GEÇİŞLERİ İÇİN) -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 60 170 L 520 170 L 570 220 L 730 220" />
+    <path d="M 60 240 L 460 240" />
+    <path d="M 60 310 L 620 310" />
+    <path d="M 60 390 L 420 390 L 460 350 L 520 350" />
+    <path d="M 560 480 L 560 310 L 610 260 L 720 260" />
   </g>
 
-  <!-- 3. Agent-message (Go Relay) -->
-  <g id="book-3">
-    <rect x="115" y="76" width="31" height="72" fill="#00ADD8" />
-    <rect x="115" y="76" width="4" height="72" fill="#5DC9E2" />
-    <rect x="119" y="78" width="25" height="2" fill="#141B2D" opacity="0.7" />
-    <text transform="translate(135, 142) rotate(-90)" fill="#141B2D" font-size="12" font-weight="bold" class="sans-txt">AgentMsg</text>
+  <!-- 5. METRO HATLARI RENKLİ ŞERİTLERİ (7px, 0°, 45°, 90° GEOMETRİ) -->
+  <g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Python Hattı (#2E86DE) -->
+    <path id="track-python" d="M 60 170 L 520 170 L 570 220 L 730 220" stroke="#2E86DE" />
+
+    <!-- Go Hattı (#00ADD8) -->
+    <path id="track-go" d="M 60 240 L 460 240" stroke="#00ADD8" />
+
+    <!-- C# .NET Hattı (#C0392B) -->
+    <path id="track-csharp" d="M 60 310 L 620 310" stroke="#C0392B" />
+
+    <!-- Dart / Flutter Hattı (#16A085) -->
+    <path id="track-dart" d="M 60 390 L 420 390 L 460 350 L 520 350" stroke="#16A085" />
+
+    <!-- ShaderLab Hattı (#F39C12) -->
+    <path id="track-shaderlab" d="M 560 480 L 560 310 L 610 260 L 720 260" stroke="#F39C12" />
   </g>
 
-  <!-- 4. 3D-Twin (Python + Web) -->
-  <g id="book-4">
-    <rect x="149" y="70" width="31" height="78" fill="#F59E0B" />
-    <rect x="149" y="70" width="4" height="78" fill="#FCD34D" />
-    <rect x="153" y="72" width="25" height="2" fill="#78350F" opacity="0.8" />
-    <text transform="translate(169, 142) rotate(-90)" fill="#141B2D" font-size="12" font-weight="bold" class="sans-txt">3D-Twin</text>
+  <!-- Hat Sonu Tamponları (Terminal Bumpers) -->
+  <g stroke="#1A1A1A" stroke-width="3" stroke-linecap="round">
+    <line x1="730" y1="213" x2="730" y2="227" />
+    <line x1="460" y1="233" x2="460" y2="247" />
+    <line x1="620" y1="303" x2="620" y2="317" />
+    <line x1="520" y1="343" x2="520" y2="357" />
+    <line x1="720" y1="253" x2="720" y2="267" />
   </g>
 
-  <!-- 5. Manhwa Çeviri (Yerel Model OCR) -->
-  <g id="book-5">
-    <rect x="183" y="74" width="32" height="74" fill="#EE5253" />
-    <rect x="183" y="74" width="4" height="74" fill="#FF7675" />
-    <rect x="187" y="76" width="26" height="2" fill="#FFF3D6" opacity="0.8" />
-    <text transform="translate(204, 142) rotate(-90)" fill="#FFFFFF" font-size="12" font-weight="bold" class="sans-txt">Manhwa</text>
+  <!-- 6. HAT BAŞI ROZETLERİ (TERMINAL BADGES) -->
+  <g>
+    <!-- Python Rozeti -->
+    <circle cx="40" cy="170" r="14" fill="#2E86DE" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="170" class="line-label">PY</text>
+
+    <!-- Go Rozeti -->
+    <circle cx="40" cy="240" r="14" fill="#00ADD8" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="240" class="line-label">GO</text>
+
+    <!-- C# Rozeti -->
+    <circle cx="40" cy="310" r="14" fill="#C0392B" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="310" class="line-label">C#</text>
+
+    <!-- Dart Rozeti -->
+    <circle cx="40" cy="390" r="14" fill="#16A085" stroke="#FFFFFF" stroke-width="2" />
+    <text x="40" y="390" class="line-label">DT</text>
+
+    <!-- ShaderLab Rozeti -->
+    <circle cx="560" cy="498" r="14" fill="#F39C12" stroke="#FFFFFF" stroke-width="2" />
+    <text x="560" y="498" class="line-label">SL</text>
   </g>
 
-  <!-- 6. pdf-toc-wizard (Python) -->
-  <g id="book-6">
-    <rect x="218" y="72" width="31" height="76" fill="#10AC84" />
-    <rect x="218" y="72" width="4" height="76" fill="#1DD1A1" />
-    <rect x="222" y="74" width="25" height="2" fill="#FFF3D6" opacity="0.8" />
-    <text transform="translate(238, 142) rotate(-90)" fill="#FFFFFF" font-size="12" font-weight="bold" class="sans-txt">pdf-toc</text>
+  <!-- 7. SMARTFINANCE ↔ SMARTFINANCE-MOBILE AKTARMA KORİDORU -->
+  <g>
+    <!-- Aktarma Kapsülü -->
+    <rect x="228" y="300" width="24" height="100" rx="12" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.5" />
+    <!-- Aktarma Yürüyüş Yolu Çizgisi -->
+    <line x1="240" y1="318" x2="240" y2="382" stroke="#7F8C8D" stroke-width="2.5" stroke-dasharray="3,3" />
+    
+    <!-- Aktarma Açıklama Etiketi -->
+    <g filter="url(#shadow)">
+      <rect x="260" y="338" width="144" height="24" rx="4" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.2" />
+      <text x="266" y="354" font-size="12" font-weight="700" fill="#2C3E50">⇄ AKTARMA: API ↔ MOBİL</text>
+    </g>
   </g>
 
-  <!-- 7. GameJam / Yanki (Unity/ShaderLab) -->
-  <g id="book-7">
-    <rect x="252" y="70" width="32" height="78" fill="#5F27CD" />
-    <rect x="252" y="70" width="4" height="78" fill="#8854D0" />
-    <rect x="256" y="72" width="26" height="2" fill="#FF9FF3" opacity="0.8" />
-    <text transform="translate(273, 140) rotate(-90)" fill="#FFFFFF" font-size="12" font-weight="bold" class="sans-txt">GameJam</text>
+  <!-- 8. İSTASYONLAR VE BİLGİ ETİKETLERİ -->
+
+  <!-- Python İstasyonları -->
+  <!-- 1. pdf-toc-wizard -->
+  <g>
+    <circle cx="140" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="140" y="138" class="station-title" text-anchor="middle">pdf-toc-wizard</text>
+    <text x="140" y="153" class="station-sub" text-anchor="middle">PDF içindekiler aracı</text>
   </g>
 
-  <!-- 8. Eczane (Flutter Nöbetçi) -->
-  <g id="book-8">
-    <rect x="287" y="74" width="32" height="74" fill="#2ED573" />
-    <rect x="287" y="74" width="4" height="74" fill="#7BED9F" />
-    <rect x="291" y="76" width="26" height="2" fill="#1E3799" opacity="0.8" />
-    <text transform="translate(308, 142) rotate(-90)" fill="#141B2D" font-size="12" font-weight="bold" class="sans-txt">Eczane</text>
+  <!-- 2. Manhwa Çeviri -->
+  <g>
+    <circle cx="310" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="310" y="138" class="station-title" text-anchor="middle">Manhwa Çeviri</text>
+    <text x="310" y="153" class="station-sub" text-anchor="middle">Webtoon çeviri eklentisi</text>
   </g>
 
-  <!-- ==================== 4. DUVARDA KATKI TAKVİMİ (53 HAFTA) ==================== -->
-  <rect x="42" y="164" width="284" height="60" fill="#1A2533" />
-  <rect x="44" y="166" width="280" height="56" fill="#1C2738" />
-
-  <!-- Takvim Başlığı (12px kuralına uygun) -->
-  <text x="48" y="180" fill="#FFF3D6" font-size="12" font-weight="bold" class="mono-txt">KATKI TAKVİMİ: 948 (53 HFT)</text>
-
-  <!-- 53 Haftalık Gerçek Veri Kareleri (4 satır x 53 sütun, 5px adım = 265px) -->
-  <g id="calendar-grid">
-    <!-- W1: 0 --><rect x="48" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="48" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="48" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="48" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W2: 0 --><rect x="53" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="53" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="53" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="53" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W3: 1 --><rect x="58" y="188" width="4" height="4" fill="#0E4429"/><rect x="58" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="58" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="58" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W4: 0 --><rect x="63" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="63" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="63" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="63" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W5: 28 --><rect x="68" y="188" width="4" height="4" fill="#006D32"/><rect x="68" y="193" width="4" height="4" fill="#006D32"/><rect x="68" y="198" width="4" height="4" fill="#26A641"/><rect x="68" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W6: 12 --><rect x="73" y="188" width="4" height="4" fill="#006D32"/><rect x="73" y="193" width="4" height="4" fill="#006D32"/><rect x="73" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="73" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W7: 0 --><rect x="78" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="78" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="78" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="78" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W8: 0 --><rect x="83" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="83" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="83" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="83" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W9: 0 --><rect x="88" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="88" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="88" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="88" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W10: 0 --><rect x="93" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="93" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="93" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="93" y="203" width="4" height="4" fill="#1E2C3D"/>
-
-    <!-- W11: 0 --><rect x="98" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="98" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="98" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="98" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W12: 2 --><rect x="103" y="188" width="4" height="4" fill="#0E4429"/><rect x="103" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="103" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="103" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W13: 0 --><rect x="108" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="108" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="108" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="108" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W14: 4 --><rect x="113" y="188" width="4" height="4" fill="#0E4429"/><rect x="113" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="113" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="113" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W15: 10 --><rect x="118" y="188" width="4" height="4" fill="#0E4429"/><rect x="118" y="193" width="4" height="4" fill="#006D32"/><rect x="118" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="118" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W16: 0 --><rect x="123" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="123" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="123" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="123" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W17: 0 --><rect x="128" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="128" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="128" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="128" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W18: 1 --><rect x="133" y="188" width="4" height="4" fill="#0E4429"/><rect x="133" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="133" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="133" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W19: 0 --><rect x="138" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="138" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="138" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="138" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W20: 0 --><rect x="143" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="143" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="143" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="143" y="203" width="4" height="4" fill="#1E2C3D"/>
-
-    <!-- W21: 0 --><rect x="148" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="148" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="148" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="148" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W22: 0 --><rect x="153" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="153" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="153" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="153" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W23: 7 --><rect x="158" y="188" width="4" height="4" fill="#0E4429"/><rect x="158" y="193" width="4" height="4" fill="#006D32"/><rect x="158" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="158" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W24: 3 --><rect x="163" y="188" width="4" height="4" fill="#0E4429"/><rect x="163" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="163" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="163" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W25: 2 --><rect x="168" y="188" width="4" height="4" fill="#0E4429"/><rect x="168" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="168" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="168" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W26: 8 --><rect x="173" y="188" width="4" height="4" fill="#0E4429"/><rect x="173" y="193" width="4" height="4" fill="#006D32"/><rect x="173" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="173" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W27: 50 --><rect x="178" y="188" width="4" height="4" fill="#006D32"/><rect x="178" y="193" width="4" height="4" fill="#26A641"/><rect x="178" y="198" width="4" height="4" fill="#39D353"/><rect x="178" y="203" width="4" height="4" fill="#006D32"/>
-    <!-- W28: 7 --><rect x="183" y="188" width="4" height="4" fill="#0E4429"/><rect x="183" y="193" width="4" height="4" fill="#006D32"/><rect x="183" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="183" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W29: 0 --><rect x="188" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="188" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="188" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="188" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W30: 9 --><rect x="193" y="188" width="4" height="4" fill="#0E4429"/><rect x="193" y="193" width="4" height="4" fill="#006D32"/><rect x="193" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="193" y="203" width="4" height="4" fill="#1E2C3D"/>
-
-    <!-- W31: 4 --><rect x="198" y="188" width="4" height="4" fill="#0E4429"/><rect x="198" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="198" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="198" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W32: 0 --><rect x="203" y="188" width="4" height="4" fill="#1E2C3D"/><rect x="203" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="203" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="203" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W33: 2 --><rect x="208" y="188" width="4" height="4" fill="#0E4429"/><rect x="208" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="208" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="208" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W34: 4 --><rect x="213" y="188" width="4" height="4" fill="#0E4429"/><rect x="213" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="213" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="213" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W35: 17 --><rect x="218" y="188" width="4" height="4" fill="#006D32"/><rect x="218" y="193" width="4" height="4" fill="#26A641"/><rect x="218" y="198" width="4" height="4" fill="#006D32"/><rect x="218" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W36: 34 --><rect x="223" y="188" width="4" height="4" fill="#006D32"/><rect x="223" y="193" width="4" height="4" fill="#26A641"/><rect x="223" y="198" width="4" height="4" fill="#26A641"/><rect x="223" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W37: 16 --><rect x="228" y="188" width="4" height="4" fill="#006D32"/><rect x="228" y="193" width="4" height="4" fill="#006D32"/><rect x="228" y="198" width="4" height="4" fill="#26A641"/><rect x="228" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W38: 3 --><rect x="233" y="188" width="4" height="4" fill="#0E4429"/><rect x="233" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="233" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="233" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W39: 2 --><rect x="238" y="188" width="4" height="4" fill="#0E4429"/><rect x="238" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="238" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="238" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W40: 2 --><rect x="243" y="188" width="4" height="4" fill="#0E4429"/><rect x="243" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="243" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="243" y="203" width="4" height="4" fill="#1E2C3D"/>
-
-    <!-- W41: 3 --><rect x="248" y="188" width="4" height="4" fill="#0E4429"/><rect x="248" y="193" width="4" height="4" fill="#1E2C3D"/><rect x="248" y="198" width="4" height="4" fill="#1E2C3D"/><rect x="248" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W42: 30 --><rect x="253" y="188" width="4" height="4" fill="#006D32"/><rect x="253" y="193" width="4" height="4" fill="#26A641"/><rect x="253" y="198" width="4" height="4" fill="#26A641"/><rect x="253" y="203" width="4" height="4" fill="#006D32"/>
-    <!-- W43: 85 --><rect x="258" y="188" width="4" height="4" fill="#26A641"/><rect x="258" y="193" width="4" height="4" fill="#39D353"/><rect x="258" y="198" width="4" height="4" fill="#39D353"/><rect x="258" y="203" width="4" height="4" fill="#26A641"/>
-    <!-- W44: 48 --><rect x="263" y="188" width="4" height="4" fill="#006D32"/><rect x="263" y="193" width="4" height="4" fill="#26A641"/><rect x="263" y="198" width="4" height="4" fill="#39D353"/><rect x="263" y="203" width="4" height="4" fill="#006D32"/>
-    <!-- W45: 100 --><rect x="268" y="188" width="4" height="4" fill="#39D353"/><rect x="268" y="193" width="4" height="4" fill="#39D353"/><rect x="268" y="198" width="4" height="4" fill="#39D353"/><rect x="268" y="203" width="4" height="4" fill="#39D353"/>
-    <!-- W46: 72 --><rect x="273" y="188" width="4" height="4" fill="#26A641"/><rect x="273" y="193" width="4" height="4" fill="#39D353"/><rect x="273" y="198" width="4" height="4" fill="#39D353"/><rect x="273" y="203" width="4" height="4" fill="#26A641"/>
-    <!-- W47: 57 --><rect x="278" y="188" width="4" height="4" fill="#006D32"/><rect x="278" y="193" width="4" height="4" fill="#26A641"/><rect x="278" y="198" width="4" height="4" fill="#39D353"/><rect x="278" y="203" width="4" height="4" fill="#006D32"/>
-    <!-- W48: 24 --><rect x="283" y="188" width="4" height="4" fill="#006D32"/><rect x="283" y="193" width="4" height="4" fill="#26A641"/><rect x="283" y="198" width="4" height="4" fill="#006D32"/><rect x="283" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W49: 59 --><rect x="288" y="188" width="4" height="4" fill="#006D32"/><rect x="288" y="193" width="4" height="4" fill="#26A641"/><rect x="288" y="198" width="4" height="4" fill="#39D353"/><rect x="288" y="203" width="4" height="4" fill="#26A641"/>
-    <!-- W50: 96 --><rect x="293" y="188" width="4" height="4" fill="#39D353"/><rect x="293" y="193" width="4" height="4" fill="#39D353"/><rect x="293" y="198" width="4" height="4" fill="#39D353"/><rect x="293" y="203" width="4" height="4" fill="#26A641"/>
-
-    <!-- W51: 81 --><rect x="298" y="188" width="4" height="4" fill="#26A641"/><rect x="298" y="193" width="4" height="4" fill="#39D353"/><rect x="298" y="198" width="4" height="4" fill="#39D353"/><rect x="298" y="203" width="4" height="4" fill="#26A641"/>
-    <!-- W52: 18 --><rect x="303" y="188" width="4" height="4" fill="#006D32"/><rect x="303" y="193" width="4" height="4" fill="#26A641"/><rect x="303" y="198" width="4" height="4" fill="#006D32"/><rect x="303" y="203" width="4" height="4" fill="#1E2C3D"/>
-    <!-- W53: 47 --><rect x="308" y="188" width="4" height="4" fill="#006D32"/><rect x="308" y="193" width="4" height="4" fill="#26A641"/><rect x="308" y="198" width="4" height="4" fill="#39D353"/><rect x="308" y="203" width="4" height="4" fill="#006D32"/>
+  <!-- 3. 3D-Twin -->
+  <g>
+    <circle cx="480" cy="170" r="8" fill="#FFFFFF" stroke="#2E86DE" stroke-width="4.5" />
+    <text x="480" y="138" class="station-title" text-anchor="middle">3D-Twin</text>
+    <text x="480" y="153" class="station-sub" text-anchor="middle">3B dijital ikiz kabini</text>
   </g>
 
-  <!-- Takvim Üzerinde Kayan Tarama Çizgisi -->
-  <g clip-path="url(#calendar-clip)">
-    <rect class="cal-scan-line" x="46" y="186" width="4" height="26" fill="#39D353" opacity="0.6" />
+  <!-- Go İstasyonu -->
+  <!-- 4. Agent-message -->
+  <g>
+    <circle cx="350" cy="240" r="8" fill="#FFFFFF" stroke="#00ADD8" stroke-width="4.5" />
+    <text x="350" y="212" class="station-title" text-anchor="middle">Agent-message</text>
+    <text x="350" y="227" class="station-sub" text-anchor="middle">Yapay Zekâ Ajanları Canlı Relay Sunucusu</text>
   </g>
 
-  <!-- ==================== 5. ÇALIŞMA MASASI VE EKİPMANLAR ==================== -->
-  <!-- Masa Ana Yüzeyi -->
-  <rect x="40" y="324" width="800" height="14" fill="#8B5A2B" />
-  <rect x="40" y="324" width="800" height="3" fill="#A06836" />
-  <rect x="40" y="335" width="800" height="3" fill="#5C3A1E" />
-  <rect x="56" y="338" width="768" height="8" fill="#4A2F17" />
+  <!-- C# İstasyonu -->
+  <!-- 5. SmartFinance (Aktarma Üst İstasyonu) -->
+  <g>
+    <circle cx="240" cy="310" r="7" fill="#C0392B" stroke="#FFFFFF" stroke-width="2" />
+    <text x="218" y="282" class="station-title" text-anchor="end">SmartFinance</text>
+    <text x="218" y="297" class="station-sub" text-anchor="end">C# .NET 9 · Clean Architecture API</text>
+  </g>
 
-  <!-- Sol Masa Ayağı -->
-  <rect x="70" y="346" width="16" height="124" fill="#5C3A1E" />
-  <rect x="70" y="346" width="4" height="124" fill="#8B5A2B" />
-  <rect x="66" y="466" width="24" height="4" fill="#3D2413" />
+  <!-- Dart İstasyonları -->
+  <!-- 6. Eczane -->
+  <g>
+    <circle cx="115" cy="390" r="8" fill="#FFFFFF" stroke="#16A085" stroke-width="4.5" />
+    <text x="115" y="420" class="station-title" text-anchor="middle">Eczane</text>
+    <text x="115" y="435" class="station-sub" text-anchor="middle">Nöbetçi eczane</text>
+  </g>
 
-  <!-- Sağ Masa Ayağı -->
-  <rect x="774" y="346" width="16" height="124" fill="#5C3A1E" />
-  <rect x="774" y="346" width="4" height="124" fill="#8B5A2B" />
-  <rect x="770" y="466" width="24" height="4" fill="#3D2413" />
+  <!-- 7. SmartFinance-Mobile (Aktarma Alt İstasyonu) -->
+  <g>
+    <circle cx="240" cy="390" r="7" fill="#16A085" stroke="#FFFFFF" stroke-width="2" />
+    <text x="240" y="420" class="station-title" text-anchor="middle">SmartFinance-Mobile</text>
+    <text x="240" y="435" class="station-sub" text-anchor="middle">Mobil finans</text>
+  </g>
 
-  <!-- Masa Çekmecesi -->
-  <rect x="670" y="346" width="94" height="114" fill="#6D431F" />
-  <rect x="670" y="346" width="94" height="2" fill="#8B5A2B" />
-  <rect x="670" y="382" width="94" height="2" fill="#4A2F17" />
-  <rect x="670" y="420" width="94" height="2" fill="#4A2F17" />
-  <rect x="710" y="362" width="14" height="4" fill="#FFF3D6" />
-  <rect x="710" y="400" width="14" height="4" fill="#FFF3D6" />
-  <rect x="710" y="438" width="14" height="4" fill="#FFF3D6" />
+  <!-- C# ve ShaderLab Kesişimi / Ortak İstasyon -->
+  <!-- 8. GameJam / Yanki -->
+  <g>
+    <!-- Çift Halka Kesişim İstasyonu -->
+    <circle cx="560" cy="310" r="11" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.5" />
+    <circle cx="560" cy="310" r="6" fill="#F39C12" stroke="#C0392B" stroke-width="2" />
+    
+    <text x="580" y="298" class="station-title">GameJam / Yanki</text>
+    <text x="702" y="298" font-size="11.5" font-weight="700" fill="#C0392B">Unity · ShaderLab · C#</text>
+    <text x="580" y="328" class="station-sub">Game Jam Oyunları &amp; Gölgelendirici Sanatı</text>
+  </g>
 
-  <!-- Masa Matı -->
-  <rect x="220" y="322" width="430" height="4" fill="#141B2D" />
+  <!-- 9. CANLI HAREKET EDEN METRO TRENLERİ (SMIL animateMotion) -->
 
-  <!-- ==================== 6. BİLGİSAYAR MONİTÖRÜ VE CANLI TERMİNAL ==================== -->
-  <!-- Monitör Ayağı -->
-  <rect x="380" y="316" width="50" height="8" fill="#101722" />
-  <rect x="368" y="322" width="74" height="4" fill="#1C2738" />
+  <!-- Python Treni (Mavi Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#2E86DE" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"
+      path="M 60 170 L 520 170 L 570 220 L 730 220 L 570 220 L 520 170 L 60 170 Z" />
+  </g>
 
-  <!-- Monitör Kasası -->
-  <rect x="230" y="200" width="350" height="124" fill="#101722" />
-  <rect x="232" y="202" width="346" height="120" fill="#1A2533" />
-  <rect x="236" y="206" width="338" height="112" fill="#0D131F" />
+  <!-- Go Treni (Turkuaz Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#00ADD8" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto"
+      path="M 60 240 L 460 240 L 60 240 Z" />
+  </g>
 
-  <!-- Monitör Ekran Başlığı (12px kuralına uygun) -->
-  <rect x="236" y="206" width="338" height="16" fill="#162234" />
-  <rect x="242" y="210" width="6" height="6" fill="#EE5253" />
-  <rect x="252" y="210" width="6" height="6" fill="#FECA57" />
-  <rect x="262" y="210" width="6" height="6" fill="#10AC84" />
-  <text x="276" y="219" fill="#48DBFB" font-size="12" font-weight="bold" class="mono-txt">~/mehmetkoc (commits)</text>
+  <!-- C# Treni (Kırmızı Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#C0392B" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="8s" repeatCount="indefinite" rotate="auto"
+      path="M 60 310 L 620 310 L 60 310 Z" />
+  </g>
 
-  <!-- Terminal İçeriği: Kayan Commit Satırları (8 Gerçek Proje, 12px Font) -->
-  <g clip-path="url(#monitor-screen-clip)">
-    <rect x="238" y="222" width="334" height="92" fill="url(#screenGlowGrad)" />
+  <!-- Dart Treni (Yeşil Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#16A085" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="7.5s" repeatCount="indefinite" rotate="auto"
+      path="M 60 390 L 420 390 L 460 350 L 520 350 L 460 350 L 420 390 L 60 390 Z" />
+  </g>
 
-    <g class="commit-terminal">
-      <!-- 1. Tur (y = 238'den başlar, satır aralığı 22px) -->
-      <g transform="translate(244, 238)">
-        <text y="0" fill="#2ECC71" font-size="12" font-weight="bold" class="mono-txt">[c#] SmartFinance: API uç noktası</text>
-        <text y="22" fill="#48DBFB" font-size="12" font-weight="bold" class="mono-txt">[flt] SmartFinance-Mob: BLoC state</text>
-        <text y="44" fill="#FECA57" font-size="12" font-weight="bold" class="mono-txt">[go] Agent-message: relay ws hub</text>
-        <text y="66" fill="#FF9FF3" font-size="12" font-weight="bold" class="mono-txt">[py] 3D-Twin: 3B manken pozları</text>
-        <text y="88" fill="#54A0FF" font-size="12" font-weight="bold" class="mono-txt">[py] Manhwa Çeviri: OCR modeli</text>
-        <text y="110" fill="#1DD1A1" font-size="12" font-weight="bold" class="mono-txt">[py] pdf-toc-wizard: içindekiler</text>
-        <text y="132" fill="#A55EEA" font-size="12" font-weight="bold" class="mono-txt">[uni] Yanki: ShaderLab efekt</text>
-        <text y="154" fill="#2ED573" font-size="12" font-weight="bold" class="mono-txt">[flt] Eczane: nöbetçi API servisi</text>
+  <!-- ShaderLab Treni (Sarı/Turuncu Hat) -->
+  <g>
+    <rect x="-11" y="-5.5" width="22" height="11" rx="4" fill="#F39C12" stroke="#FFFFFF" stroke-width="1.8" />
+    <rect x="-5" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <rect x="1" y="-3.5" width="3.5" height="7" rx="0.8" fill="#FFFFFF" opacity="0.85" />
+    <circle cx="8" cy="-2.5" r="1.2" fill="#FFEAA7" />
+    <circle cx="8" cy="2.5" r="1.2" fill="#FFEAA7" />
+    <animateMotion dur="8.5s" repeatCount="indefinite" rotate="auto"
+      path="M 560 480 L 560 310 L 610 260 L 720 260 L 610 260 L 560 310 L 560 480 Z" />
+  </g>
+
+  <!-- 10. SAĞ ALT: RESMİ HAT LEJANTI (METRO LINES LEGEND) -->
+  <g filter="url(#shadow)">
+    <rect x="615" y="358" width="240" height="146" rx="8" fill="#FFFFFF" stroke="#DCDCD6" stroke-width="1.5" />
+    
+    <!-- Başlık -->
+    <rect x="615" y="358" width="240" height="26" rx="8" fill="#F8F8F6" />
+    <text x="626" y="375" font-size="12" font-weight="800" fill="#1A1A1A" letter-spacing="0.5">HAT VE TEKNOLOJİ LEJANTI</text>
+    <line x1="615" y1="384" x2="855" y2="384" stroke="#E6E6DF" stroke-width="1" />
+
+    <!-- 1. Python -->
+    <rect x="626" y="394" width="20" height="6" rx="3" fill="#2E86DE" />
+    <text x="652" y="401" font-size="12" font-weight="700" fill="#1A1A1A">Python</text>
+    <text x="734" y="401" font-size="12" font-weight="700" fill="#2E86DE">%33</text>
+    <text x="764" y="401" font-size="12" fill="#555555">Ana Hat</text>
+
+    <!-- 2. TypeScript -->
+    <line x1="626" y1="419" x2="646" y2="419" stroke="#4A90E2" stroke-width="5" stroke-dasharray="4,2" />
+    <text x="652" y="420" font-size="12" font-weight="700" fill="#1A1A1A">TypeScript</text>
+    <text x="734" y="420" font-size="12" font-weight="700" fill="#4A90E2">%16</text>
+    <text x="764" y="420" font-size="12" fill="#555555">Web Arayüz</text>
+
+    <!-- 3. ShaderLab -->
+    <rect x="626" y="433" width="20" height="6" rx="3" fill="#F39C12" />
+    <text x="652" y="439" font-size="12" font-weight="700" fill="#1A1A1A">ShaderLab</text>
+    <text x="734" y="439" font-size="12" font-weight="700" fill="#F39C12">%12</text>
+    <text x="764" y="439" font-size="12" fill="#555555">Unity / Jam</text>
+
+    <!-- 4. C# -->
+    <rect x="626" y="452" width="20" height="6" rx="3" fill="#C0392B" />
+    <text x="652" y="458" font-size="12" font-weight="700" fill="#1A1A1A">C# .NET 9</text>
+    <text x="734" y="458" font-size="12" font-weight="700" fill="#C0392B">%11</text>
+    <text x="764" y="458" font-size="12" fill="#555555">Backend API</text>
+
+    <!-- 5. Dart -->
+    <rect x="626" y="471" width="20" height="6" rx="3" fill="#16A085" />
+    <text x="652" y="477" font-size="12" font-weight="700" fill="#1A1A1A">Dart / Flutter</text>
+    <text x="740" y="477" font-size="12" font-weight="700" fill="#16A085">%8</text>
+    <text x="764" y="477" font-size="12" fill="#555555">Mobil Ağı</text>
+
+    <!-- 6. Go -->
+    <rect x="626" y="490" width="20" height="6" rx="3" fill="#00ADD8" />
+    <text x="652" y="496" font-size="12" font-weight="700" fill="#1A1A1A">Go — Ajan ağı</text>
+  </g>
+
+  <!-- 11. EN ALT: CANLI KAYAN TABELA (TICKER TAPE) -->
+  <g>
+    <!-- Tabela Siyah Arka Planı -->
+    <rect x="25" y="516" width="830" height="32" rx="6" fill="#1A1A1A" />
+
+    <!-- Sol Sabit Rozet: "CANLI METRO BİLGİ" -->
+    <rect x="28" y="519" width="138" height="26" rx="4" fill="#2C3E50" />
+    <circle cx="41" cy="532" r="4.5" fill="#2ECC71">
+      <animate attributeName="opacity" values="1;0.25;1" dur="1.8s" repeatCount="indefinite" />
+    </circle>
+    <text x="53" y="536" font-size="12" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">CANLI TABELA</text>
+
+    <!-- Kayan Metin Bölgesi (Kırpılmış Görünüm) -->
+    <g clip-path="url(#ticker-clip)">
+      <g>
+        <text x="180" y="536" font-size="12" font-weight="600" fill="#F1C40F" letter-spacing="0.5">
+          HAT RAPORU: Son 1 yıl: 948 katkı · 19 depo · 6 yıldız · 15 takipçi · 53 aktif hafta · Aktarma Noktası: SmartFinance (C#) ⇄ SmartFinance-Mobile (Dart) · GameJam (Unity + ShaderLab) · Agent-message (Go Canlı Röle) · Python Ağı: 3D-Twin, Manhwa Çeviri, pdf-toc-wizard · Türkiye          HAT RAPORU: Son 1 yıl: 948 katkı · 19 depo · 6 yıldız · 15 takipçi · 53 aktif hafta · Aktarma Noktası: SmartFinance (C#) ⇄ SmartFinance-Mobile (Dart) · GameJam (Unity + ShaderLab) · Agent-message (Go Canlı Röle) · Python Ağı: 3D-Twin, Manhwa Çeviri, pdf-toc-wizard · Türkiye
+        </text>
+        <animateTransform attributeName="transform" type="translate" from="0 0" to="-1920 0" dur="25s" repeatCount="indefinite" />
       </g>
-
-      <!-- 2. Tur (Kesintisiz döngü, y = 414) -->
-      <g transform="translate(244, 414)">
-        <text y="0" fill="#2ECC71" font-size="12" font-weight="bold" class="mono-txt">[c#] SmartFinance: API uç noktası</text>
-        <text y="22" fill="#48DBFB" font-size="12" font-weight="bold" class="mono-txt">[flt] SmartFinance-Mob: BLoC state</text>
-        <text y="44" fill="#FECA57" font-size="12" font-weight="bold" class="mono-txt">[go] Agent-message: relay ws hub</text>
-        <text y="66" fill="#FF9FF3" font-size="12" font-weight="bold" class="mono-txt">[py] 3D-Twin: 3B manken pozları</text>
-        <text y="88" fill="#54A0FF" font-size="12" font-weight="bold" class="mono-txt">[py] Manhwa Çeviri: OCR modeli</text>
-        <text y="110" fill="#1DD1A1" font-size="12" font-weight="bold" class="mono-txt">[py] pdf-toc-wizard: içindekiler</text>
-        <text y="132" fill="#A55EEA" font-size="12" font-weight="bold" class="mono-txt">[uni] Yanki: ShaderLab efekt</text>
-        <text y="154" fill="#2ED573" font-size="12" font-weight="bold" class="mono-txt">[flt] Eczane: nöbetçi API servisi</text>
-      </g>
     </g>
   </g>
-
-  <!-- Klavye ve Mouse -->
-  <g id="keyboard">
-    <rect x="326" y="328" width="150" height="8" fill="#1A2533" />
-    <rect x="328" y="329" width="146" height="4" fill="#2C3E50" />
-    <rect x="332" y="330" width="8" height="2" fill="#48DBFB" />
-    <rect x="342" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="352" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="362" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="372" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="382" y="330" width="24" height="2" fill="#FF9F43" />
-    <rect x="408" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="418" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="428" y="330" width="8" height="2" fill="#FFF3D6" />
-    <rect x="438" y="330" width="8" height="2" fill="#48DBFB" />
-    <rect x="448" y="330" width="20" height="2" fill="#2ECC71" />
-  </g>
-
-  <g id="mouse">
-    <rect x="496" y="328" width="14" height="10" fill="#1C2738" />
-    <rect x="502" y="329" width="2" height="4" fill="#48DBFB" />
-  </g>
-
-  <!-- ==================== 7. MOBİL TELEFON (FLUTTER UYGULAMASI) ==================== -->
-  <g id="smartphone">
-    <rect x="600" y="318" width="34" height="8" fill="#101722" />
-    <rect x="610" y="314" width="14" height="6" fill="#1A2533" />
-
-    <!-- Telefon Gövdesi -->
-    <rect x="590" y="248" width="54" height="76" fill="#0D131F" />
-    <rect x="592" y="250" width="50" height="72" fill="#1A2533" />
-    <rect x="594" y="252" width="46" height="68" fill="#0A3D62" />
-
-    <!-- Flutter Mockup Ekranı -->
-    <rect x="594" y="252" width="46" height="14" fill="#02569B" />
-    <!-- Flutter İkonu (Piksel eşkenar dörtgenler) -->
-    <polygon points="598,256 602,260 598,264 595,260" fill="#48DBFB" />
-    <polygon points="602,258 606,262 602,265 599,262" fill="#29B6F6" />
-    <!-- Pulsing Bildirim LED'i -->
-    <circle class="phone-led" cx="632" cy="259" r="2" fill="#2ECC71" />
-
-    <!-- UI Kartları ve Grafikler -->
-    <rect x="598" y="270" width="38" height="8" fill="#0C2461" />
-    <rect x="600" y="272" width="18" height="4" fill="#48DBFB" />
-
-    <rect x="598" y="282" width="6" height="18" fill="#48DBFB" />
-    <rect x="606" y="286" width="6" height="14" fill="#2ED573" />
-    <rect x="614" y="278" width="6" height="22" fill="#FF9F43" />
-    <rect x="622" y="284" width="6" height="16" fill="#EE5253" />
-
-    <rect x="594" y="310" width="46" height="10" fill="#02569B" />
-    <rect x="598" y="313" width="6" height="4" fill="#FFF3D6" />
-    <rect x="610" y="313" width="6" height="4" fill="#48DBFB" />
-    <rect x="622" y="313" width="6" height="4" fill="#FFF3D6" />
-    <rect x="632" y="313" width="4" height="4" fill="#FFF3D6" />
-  </g>
-
-  <!-- ==================== 8. KAHVE KUPASI VE YÜKSELEN BUHAR ==================== -->
-  <g id="coffee-mug">
-    <rect x="548" y="324" width="22" height="2" fill="#FFF3D6" opacity="0.6" />
-    <rect x="552" y="306" width="14" height="18" fill="#FFF3D6" />
-    <rect x="554" y="308" width="10" height="14" fill="#FF9F43" opacity="0.3" />
-    <rect x="566" y="310" width="3" height="8" fill="#FFF3D6" />
-    <rect x="566" y="312" width="2" height="4" fill="#141B2D" />
-    <rect x="554" y="306" width="10" height="2" fill="#3D2413" />
-
-    <!-- Yükselen Piksel Buharlar -->
-    <g class="steam-1">
-      <rect x="555" y="298" width="2" height="3" fill="#FFF3D6" opacity="0.6" />
-      <rect x="557" y="294" width="2" height="3" fill="#FFF3D6" opacity="0.5" />
-      <rect x="554" y="290" width="3" height="3" fill="#FFF3D6" opacity="0.4" />
-    </g>
-    <g class="steam-2">
-      <rect x="558" y="299" width="2" height="3" fill="#FFF3D6" opacity="0.7" />
-      <rect x="560" y="295" width="2" height="3" fill="#FFF3D6" opacity="0.5" />
-      <rect x="562" y="291" width="3" height="3" fill="#FFF3D6" opacity="0.3" />
-    </g>
-  </g>
-
-  <!-- ==================== 9. MASADA UYUYAN PİKSEL KEDİ ==================== -->
-  <g id="sleeping-cat">
-    <rect x="94" y="322" width="124" height="4" fill="#A06836" />
-    <rect x="98" y="323" width="116" height="2" fill="#E67E22" />
-
-    <g class="cat-body-anim">
-      <!-- Ana Turuncu Tekir Gövde -->
-      <rect x="110" y="304" width="68" height="20" fill="#E67E22" />
-      <rect x="114" y="298" width="58" height="8" fill="#E67E22" />
-      <rect x="120" y="294" width="46" height="6" fill="#E67E22" />
-      <rect x="118" y="320" width="60" height="4" fill="#D35400" />
-
-      <!-- Tekir Çizgileri -->
-      <rect x="130" y="296" width="4" height="12" fill="#D35400" />
-      <rect x="142" y="296" width="4" height="14" fill="#D35400" />
-      <rect x="154" y="296" width="4" height="12" fill="#D35400" />
-
-      <!-- Kedi Başı -->
-      <rect x="100" y="306" width="18" height="16" fill="#E67E22" />
-      <rect x="104" y="302" width="12" height="6" fill="#E67E22" />
-      <polygon points="102,302 106,294 108,302" fill="#D35400" />
-      <polygon points="112,302 116,294 118,302" fill="#D35400" />
-      <rect x="104" y="298" width="2" height="3" fill="#FADBD8" />
-      <rect x="114" y="298" width="2" height="3" fill="#FADBD8" />
-
-      <!-- Kapalı Gözler -->
-      <rect x="102" y="312" width="5" height="2" fill="#78281F" />
-      <rect x="109" y="312" width="5" height="2" fill="#78281F" />
-      <rect x="100" y="314" width="3" height="2" fill="#F1948A" />
-      <rect x="101" y="316" width="6" height="3" fill="#FFF3D6" />
-
-      <rect x="106" y="320" width="10" height="4" fill="#FFF3D6" />
-      <rect x="122" y="320" width="8" height="4" fill="#FFF3D6" />
-    </g>
-
-    <g class="cat-tail-anim">
-      <rect x="176" y="312" width="16" height="6" fill="#E67E22" />
-      <rect x="188" y="306" width="8" height="8" fill="#E67E22" />
-      <rect x="194" y="302" width="6" height="6" fill="#FFF3D6" />
-    </g>
-
-    <!-- Zzz Animasyonu (En küçük yazı kuralına uygun: 12px ve 14px) -->
-    <g class="zzz-1">
-      <text x="100" y="284" fill="#FFE29F" font-size="12" font-weight="bold" class="pixel-title">z</text>
-    </g>
-    <g class="zzz-2">
-      <text x="110" y="274" fill="#FF9F43" font-size="14" font-weight="bold" class="pixel-title">Z</text>
-    </g>
-  </g>
-
-  <!-- ==================== 10. ÇALIŞMA LAMBASI VE IŞIK KONİSİ ==================== -->
-  <g id="desk-lamp">
-    <rect x="740" y="318" width="36" height="8" fill="#1C2738" />
-    <rect x="746" y="314" width="24" height="4" fill="#FF9F43" />
-
-    <rect x="756" y="270" width="4" height="46" fill="#FECA57" />
-    <rect x="754" y="268" width="8" height="6" fill="#1C2738" />
-    <rect x="732" y="234" width="28" height="4" fill="#FECA57" />
-    <rect x="728" y="232" width="6" height="8" fill="#1C2738" />
-
-    <polygon points="706,242 744,228 752,246 720,256" fill="#FF9F43" />
-    <polygon points="710,244 742,232 748,244 722,254" fill="#D35400" />
-
-    <ellipse class="lamp-bulb" cx="724" cy="250" rx="6" ry="4" />
-  </g>
-
-  <!-- Lamba Işık Konisi -->
-  <g class="lamp-glow">
-    <polygon points="724,250 830,470 320,470 420,324" fill="url(#lampConeGrad)" />
-  </g>
-
-  <!-- Masa Detayları: Not Defteri ve Kitaplar -->
-  <rect x="228" y="324" width="36" height="2" fill="#FFF3D6" />
-  <rect x="232" y="323" width="28" height="1" fill="#FECA57" />
-  <rect x="268" y="324" width="16" height="1" fill="#48DBFB" />
-
-  <rect x="664" y="316" width="36" height="8" fill="#5F27CD" />
-  <rect x="666" y="312" width="34" height="5" fill="#10AC84" />
-  <rect x="670" y="306" width="28" height="6" fill="#EE5253" />
-
-  <!-- ==================== 11. SOL ÜST: PİKSEL TABELA (KİMLİK) ==================== -->
-  <g id="top-signboard">
-    <rect x="24" y="22" width="460" height="52" fill="#141B2D" />
-    <rect x="26" y="24" width="456" height="48" fill="#1F2D3E" />
-    <rect x="28" y="26" width="452" height="44" fill="#243447" />
-
-    <rect x="28" y="26" width="4" height="4" fill="#FF9F43" />
-    <rect x="476" y="26" width="4" height="4" fill="#FF9F43" />
-    <rect x="28" y="66" width="4" height="4" fill="#FF9F43" />
-    <rect x="476" y="66" width="4" height="4" fill="#FF9F43" />
-
-    <!-- Avatar Piksel Rozeti -->
-    <rect x="36" y="32" width="32" height="32" fill="#101722" />
-    <rect x="38" y="34" width="28" height="28" fill="#00ADD8" />
-    <rect x="44" y="38" width="16" height="8" fill="#3D2413" />
-    <rect x="46" y="44" width="12" height="10" fill="#FADBD8" />
-    <rect x="48" y="48" width="2" height="2" fill="#141B2D" />
-    <rect x="54" y="48" width="2" height="2" fill="#141B2D" />
-    <rect x="42" y="56" width="20" height="6" fill="#512BD4" />
-
-    <!-- Başlık ve Tanım (18px, 13px, 12px) -->
-    <text x="76" y="44" fill="#FFF3D6" font-size="18" font-weight="bold" class="pixel-title">MEHMET KOÇ</text>
-    <text x="202" y="44" fill="#48DBFB" font-size="13" font-weight="bold" class="mono-txt">@MehmetKoc16</text>
-    <text x="328" y="44" fill="#FECA57" font-size="13" class="mono-txt">· Türkiye 🇹🇷</text>
-
-    <text x="76" y="61" fill="#E2E8F0" font-size="12" class="sans-txt">Mobil, backend ve yapay zekâ araçları geliştiriyorum</text>
-  </g>
-
-  <!-- ==================== 12. SAĞ ÜST: HUD İSTATİSTİK KARTLARI ==================== -->
-  <g id="top-hud">
-    <rect x="496" y="22" width="358" height="52" fill="#141B2D" />
-    <rect x="498" y="24" width="354" height="48" fill="#1F2D3E" />
-    <rect x="500" y="26" width="350" height="44" fill="#243447" />
-
-    <rect x="500" y="26" width="4" height="4" fill="#48DBFB" />
-    <rect x="846" y="26" width="4" height="4" fill="#48DBFB" />
-    <rect x="500" y="66" width="4" height="4" fill="#48DBFB" />
-    <rect x="846" y="66" width="4" height="4" fill="#48DBFB" />
-
-    <!-- 1. Satır: İstatistikler (Tümü 11px) -->
-    <g transform="translate(508, 41)">
-      <rect x="0" y="-11" width="72" height="15" fill="#0E4429" />
-      <text x="6" y="0" fill="#39D353" font-size="11" font-weight="bold" class="mono-txt">948 katkı</text>
-
-      <rect x="77" y="-11" width="60" height="15" fill="#1C2738" />
-      <text x="83" y="0" fill="#48DBFB" font-size="11" font-weight="bold" class="mono-txt">19 depo</text>
-
-      <rect x="142" y="-11" width="86" height="15" fill="#2C2718" />
-      <text x="148" y="0" fill="#FECA57" font-size="11" font-weight="bold" class="mono-txt">★ 6 yıldız</text>
-
-      <rect x="233" y="-11" width="92" height="15" fill="#2D1C38" />
-      <text x="239" y="0" fill="#FF9FF3" font-size="11" font-weight="bold" class="mono-txt">15 takipçi</text>
-    </g>
-
-    <!-- 2. Satır: Gerçek Dil Dağılımı ve Metin (11px) -->
-    <g transform="translate(508, 48)">
-      <!-- Dil Çubuğu (Python 33, TS 16, ShaderLab 12, C# 11, Dart 8, diğer 20) -->
-      <rect x="0" y="0" width="110" height="3" fill="#3572A5" />
-      <rect x="111" y="0" width="53" height="3" fill="#3178C6" />
-      <rect x="165" y="0" width="40" height="3" fill="#222C37" />
-      <rect x="206" y="0" width="36" height="3" fill="#178600" />
-      <rect x="243" y="0" width="27" height="3" fill="#00B4AB" />
-      <rect x="271" y="0" width="63" height="3" fill="#6E7681" />
-    </g>
-
-    <g transform="translate(508, 63)">
-      <text x="0" y="0" fill="#FFF3D6" font-size="11" font-weight="bold" class="mono-txt">Py 33 · TS 16 · SL 12 · C# 11 · Dart 8</text>
-    </g>
-  </g>
-
-  <!-- ==================== 13. DIŞ ÇERÇEVE KENARLIĞI ==================== -->
-  <rect x="0" y="0" width="880" height="520" fill="none" stroke="#0D131F" stroke-width="4" />
 </svg>
