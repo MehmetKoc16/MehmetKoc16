@@ -2,7 +2,7 @@
 
 <img src="sahneler/gunun-sahnesi.svg" width="100%" alt="Mehmet Koç — günün sahnesi" />
 
-<sub>Bugünün sahnesi: <b><!--sahne-->RPG karakter kâğıdı<!--/sahne--></b> · her gün başka bir sahne ·
+<sub>Bugünün sahnesi: <b><!--sahne-->Dikey çizgi roman<!--/sahne--></b> · her gün başka bir sahne ·
 <a href="sahneler/game-jam.svg">Game jam</a> ·
 <a href="sahneler/piksel-oda.svg">Piksel oda</a> ·
 <a href="sahneler/commit-metro.svg">Metro</a> ·
